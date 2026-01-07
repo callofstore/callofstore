@@ -265,6 +265,18 @@
             font-size: 0.8rem;
         }
 
+        .special-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff9800;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
         .buy-btn {
             width: 100%;
             padding: 10px;
@@ -618,7 +630,7 @@
     <section id="apenas-12">
         <div class="container">
             <div class="special-section">
-                <h2 class="section-title">🔥 APENAS R$12 🔥</h2>
+                <h2 class="section-title">🔥 APENAS R$13,71 🔥</h2>
                 <p style="text-align: center; color: #ff4081; font-size: 1.2rem; margin-bottom: 30px;">
                     💲 Jogos incríveis por apenas R$13,71! Promoção imperdível! 💲
                 </p>
@@ -746,151 +758,904 @@
     </div>
 
     <script>
-        // Game data with ALL PRICES CORRECTED + 251.5151515152% INCREASE APPLIED
+        // ============================================
+        // DADOS DOS JOGOS - PREÇOS ORIGINAIS DA FORCE WAR STORE
+        // ============================================
+        
+        // Fator de aumento: 251.5151515152% = multiplicar por 3.515151515152
+        const fatorAumento = 3.515151515152;
+
+        // Função para calcular preço com aumento
+        function calcularPrecoComAumento(precoOriginal) {
+            return parseFloat((precoOriginal * fatorAumento).toFixed(2));
+        }
+
+        // Função para calcular desconto
+        function calcularDesconto(precoOriginal, precoComDesconto) {
+            return Math.round(((precoOriginal - precoComDesconto) / precoOriginal) * 100);
+        }
+
+        // Game data with ORIGINAL PRICES from Force War Store
         const gamesData = {
             novidades: [
-                { id: 1, title: "Silent Hill f", price: 105.10, originalPrice: 1229.95, discount: 91, image: "https://comicbook.com/wp-content/uploads/sites/4/2025/03/Silent-Hill-f-Key-Art.jpg" },
-                { id: 2, title: "Dying Light The Beast", price: 69.95, originalPrice: 875.29, discount: 92, image: "https://gamingbolt.com/wp-content/uploads/2024/08/Dying-Light-The-Beast-scaled.jpg" },
-                { id: 3, title: "Hollow Knight Silksong", price: 52.38, originalPrice: 210.60, discount: 75, image: "https://www.nintendo-insider.com/wp-content/uploads/2024/08/hollow_knight_silksong_banner.jpg" },
-                { id: 4, title: "Metal Gear Solid Δ Snake Eater", price: 105.10, originalPrice: 1229.95, discount: 91, image: "https://cdn.wccftech.com/wp-content/uploads/2023/10/Metal-Gear-Solid-Delta-Snake-Eater.jpg" },
-                { id: 5, title: "Clair Obscur Expedition 33", price: 69.95, originalPrice: 699.58, discount: 90, image: "https://cdn.wccftech.com/wp-content/uploads/2024/06/clair-obscur-expedition-33-HD-scaled.jpg" },
-                { id: 6, title: "Marvel's Spider-Man 2", price: 69.95, originalPrice: 878.48, discount: 92, image: "https://image.api.playstation.com/vulcan/ap/rnd/202308/0914/9e3a6d2f5f7c9c392d9d5e5a8f6c0a5c.png" },
-                { id: 7, title: "No, I'm not a Human", price: 34.80, originalPrice: 165.21, discount: 79, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2791810/header.jpg" },
-                { id: 8, title: "Hell is Us", price: 62.92, originalPrice: 632.84, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1883560/header.jpg" }
+                { 
+                    id: 1, 
+                    title: "Silent Hill f", 
+                    originalPrice: 349.90, // Preço original mantido
+                    price: calcularPrecoComAumento(29.90), // Preço com desconto aumentado
+                    image: "https://comicbook.com/wp-content/uploads/sites/4/2025/03/Silent-Hill-f-Key-Art.jpg" 
+                },
+                { 
+                    id: 2, 
+                    title: "Dying Light: The Beast", 
+                    originalPrice: 249.00,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://gamingbolt.com/wp-content/uploads/2024/08/Dying-Light-The-Beast-scaled.jpg" 
+                },
+                { 
+                    id: 3, 
+                    title: "Hollow Knight: Silksong", 
+                    originalPrice: 59.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://www.nintendo-insider.com/wp-content/uploads/2024/08/hollow_knight_silksong_banner.jpg" 
+                },
+                { 
+                    id: 4, 
+                    title: "Metal Gear Solid Δ Snake Eater", 
+                    originalPrice: 349.90,
+                    price: calcularPrecoComAumento(29.90),
+                    image: "https://cdn.wccftech.com/wp-content/uploads/2023/10/Metal-Gear-Solid-Delta-Snake-Eater.jpg" 
+                },
+                { 
+                    id: 5, 
+                    title: "Clair Obscur: Expedition 33", 
+                    originalPrice: 199.00,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://cdn.wccftech.com/wp-content/uploads/2024/06/clair-obscur-expedition-33-HD-scaled.jpg" 
+                },
+                { 
+                    id: 6, 
+                    title: "Marvel's Spider-Man 2", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202308/0914/9e3a6d2f5f7c9c392d9d5e5a8f6c0a5c.png" 
+                },
+                { 
+                    id: 7, 
+                    title: "No, I'm not a Human", 
+                    originalPrice: 46.99,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2791810/header.jpg" 
+                },
+                { 
+                    id: 8, 
+                    title: "Hell is Us", 
+                    originalPrice: 179.99,
+                    price: calcularPrecoComAumento(17.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1883560/header.jpg" 
+                }
             ],
             maisVendidos: [
-                { id: 9, title: "God of War", price: 41.85, originalPrice: 702.72, discount: 94, image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/LsaRVLF2IU2L1FNtu9d3MKLq.jpg", bestSeller: true },
-                { id: 10, title: "Elden Ring", price: 34.80, originalPrice: 965.16, discount: 96, image: "https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/phvVT0qZfcRms5qDk52IiHSk.png", bestSeller: true },
-                { id: 11, title: "Red Dead Redemption 2", price: 62.92, originalPrice: 1054.37, discount: 94, image: "https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png", bestSeller: true },
-                { id: 12, title: "The Last of Us Part I", price: 69.95, originalPrice: 878.48, discount: 92, image: "https://image.api.playstation.com/vulcan/ap/rnd/202206/0720/eEczyEMDd2BLa3dtkGJVE9Vx.png", bestSeller: true },
-                { id: 13, title: "God of War Ragnarök", price: 69.95, originalPrice: 878.48, discount: 92, image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png", bestSeller: true },
-                { id: 14, title: "The Last of Us Part II Remastered", price: 87.53, originalPrice: 702.72, discount: 88, image: "https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/315718bce7eed62e3cf3fb02d61b81ff1782d6b6cf850fa4.png", bestSeller: true },
-                { id: 15, title: "Cyberpunk 2077", price: 48.86, originalPrice: 702.72, discount: 93, image: "https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/kh4MUIuMmHlktOHar3lVl6rY.png", bestSeller: true },
-                { id: 16, title: "Ghost of Tsushima DIRECTOR'S CUT", price: 34.80, originalPrice: 878.48, discount: 96, image: "https://image.api.playstation.com/vulcan/ap/rnd/202107/3012/1BqfS7N14ePcGBL6L5q9jujW.png", bestSeller: true },
-                { id: 17, title: "Grand Theft Auto V Enhanced | Legacy", price: 34.80, originalPrice: 526.97, discount: 93, image: "https://image.api.playstation.com/vulcan/ap/rnd/202202/2815/yMxXqhwWX96nQ6J5pZb4e9g4.png", bestSeller: true },
-                { id: 18, title: "Resident Evil 4 Remake", price: 69.95, originalPrice: 597.28, discount: 88, image: "https://image.api.playstation.com/vulcan/ap/rnd/202210/0706/6sAXv8q5OYpYmjYQuoyLvUfM.png", bestSeller: true }
+                { 
+                    id: 9, 
+                    title: "God of War", 
+                    originalPrice: 199.90,
+                    price: calcularPrecoComAumento(11.90),
+                    image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/LsaRVLF2IU2L1FNtu9d3MKLq.jpg", 
+                    bestSeller: true 
+                },
+                { 
+                    id: 10, 
+                    title: "Elden Ring", 
+                    originalPrice: 274.50,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/phvVT0qZfcRms5qDk52IiHSk.png", 
+                    bestSeller: true 
+                },
+                { 
+                    id: 11, 
+                    title: "Red Dead Redemption 2", 
+                    originalPrice: 299.90,
+                    price: calcularPrecoComAumento(17.90),
+                    image: "https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png", 
+                    bestSeller: true 
+                },
+                { 
+                    id: 12, 
+                    title: "The Last of Us™ Part I", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202206/0720/eEczyEMDd2BLa3dtkGJVE9Vx.png", 
+                    bestSeller: true 
+                },
+                { 
+                    id: 13, 
+                    title: "God of War Ragnarök", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png", 
+                    bestSeller: true 
+                },
+                { 
+                    id: 14, 
+                    title: "The Last of Us™ Parte II Remastered", 
+                    originalPrice: 199.90,
+                    price: calcularPrecoComAumento(24.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/315718bce7eed62e3cf3fb02d61b81ff1782d6b6cf850fa4.png", 
+                    bestSeller: true 
+                },
+                { 
+                    id: 15, 
+                    title: "Cyberpunk 2077", 
+                    originalPrice: 199.90,
+                    price: calcularPrecoComAumento(13.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/kh4MUIuMmHlktOHar3lVl6rY.png", 
+                    bestSeller: true 
+                },
+                { 
+                    id: 16, 
+                    title: "Ghost of Tsushima DIRECTOR'S CUT", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202107/3012/1BqfS7N14ePcGBL6L5q9jujW.png", 
+                    bestSeller: true 
+                },
+                { 
+                    id: 17, 
+                    title: "Grand Theft Auto V Enhanced | Legacy", 
+                    originalPrice: 149.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202202/2815/yMxXqhwWX96nQ6J5pZb4e9g4.png", 
+                    bestSeller: true 
+                },
+                { 
+                    id: 18, 
+                    title: "Resident Evil 4 Remake", 
+                    originalPrice: 169.90,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202210/0706/6sAXv8q5OYpYmjYQuoyLvUfM.png", 
+                    bestSeller: true 
+                }
             ],
             populares: [
-                { id: 19, title: "Elden Ring Nightreign", price: 69.95, originalPrice: 0, discount: 0, image: "https://image.api.playstation.com/vulcan/ap/rnd/202501/2901/9ff4b9fde2b7dce20fa282961454b7a81695d598eb5c7404.png" },
-                { id: 20, title: "Need for Speed Most Wanted", price: 34.80, originalPrice: 280.86, discount: 88, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1262560/header.jpg" },
-                { id: 21, title: "Forza Horizon 5", price: 69.95, originalPrice: 878.48, discount: 92, image: "https://image.api.playstation.com/vulcan/ap/rnd/202108/0421/yfKCs2ELB5MqO4MgC2A3E6Fy.png" },
-                { id: 22, title: "Forza Horizon 4", price: 34.80, originalPrice: 702.72, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1293830/header.jpg" },
-                { id: 23, title: "SILENT HILL 2", price: 69.95, originalPrice: 1229.95, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/header.jpg" },
-                { id: 24, title: "S.T.A.L.K.E.R. 2 Heart of Chornobyl", price: 105.10, originalPrice: 843.36, discount: 88, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1643320/header.jpg" },
-                { id: 25, title: "Metal Gear Solid V The Phantom Pain", price: 34.80, originalPrice: 456.67, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/287700/header.jpg" },
-                { id: 26, title: "Metro Exodus", price: 52.38, originalPrice: 526.97, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/412020/header.jpg" },
-                { id: 27, title: "The Elder Scrolls IV Oblivion Remastered", price: 87.53, originalPrice: 931.39, discount: 91, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/22330/header.jpg" },
-                { id: 28, title: "Ready or Not", price: 34.80, originalPrice: 526.97, discount: 93, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/header.jpg" },
-                { id: 29, title: "Raft", price: 17.22, originalPrice: 140.26, discount: 88, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/648800/header.jpg" },
-                { id: 30, title: "Stray", price: 34.80, originalPrice: 175.43, discount: 80, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg" },
-                { id: 31, title: "Split Fiction", price: 34.80, originalPrice: 702.72, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2687570/header.jpg" },
-                { id: 32, title: "The Elder Scrolls V Skyrim Special Edition", price: 17.22, originalPrice: 140.26, discount: 88, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/489830/header.jpg" },
-                { id: 33, title: "Detroit Become Human", price: 34.80, originalPrice: 175.43, discount: 80, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1222140/header.jpg" },
-                { id: 34, title: "Baldur's Gate 3", price: 52.38, originalPrice: 878.48, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg" },
-                { id: 35, title: "BLEACH Rebirth of Souls", price: 34.80, originalPrice: 984.02, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1689620/header.jpg" },
-                { id: 36, title: "Devil May Cry 5", price: 34.80, originalPrice: 421.45, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/601150/header.jpg" },
-                { id: 37, title: "Devil May Cry 4", price: 17.22, originalPrice: 316.02, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/329050/header.jpg" },
-                { id: 38, title: "Horizon Forbidden West Complete Edition", price: 69.95, originalPrice: 1054.37, discount: 93, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2420110/header.jpg" },
-                { id: 39, title: "Horizon Zero Dawn Complete Edition", price: 34.80, originalPrice: 878.48, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1151640/header.jpg" },
-                { id: 40, title: "Dragon Ball Sparking! Zero", price: 69.95, originalPrice: 1564.20, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1790600/header.jpg" },
-                { id: 41, title: "Death Stranding Director's Cut", price: 34.80, originalPrice: 562.16, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1850570/header.jpg" },
-                { id: 42, title: "171", price: 34.80, originalPrice: 210.60, discount: 83, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1269370/header.jpg" },
-                { id: 43, title: "DARK SOULS II", price: 34.80, originalPrice: 562.16, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/236430/header.jpg" },
-                { id: 44, title: "DARK SOULS III", price: 34.80, originalPrice: 808.28, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/374320/header.jpg" },
-                { id: 45, title: "DARK SOULS REMASTERED", price: 34.80, originalPrice: 562.16, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/570940/header.jpg" },
-                { id: 46, title: "Sekiro Shadows Die Twice GOTY Edition", price: 34.80, originalPrice: 491.84, discount: 93, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/814380/header.jpg" },
-                { id: 47, title: "Shadow of the Tomb Raider Definitive Edition", price: 34.80, originalPrice: 421.45, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/750920/header.jpg" },
-                { id: 48, title: "Marvel's Spider-Man Miles Morales", price: 34.80, originalPrice: 702.72, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1817190/header.jpg" },
-                { id: 49, title: "Marvel's Spider-Man Remastered", price: 34.80, originalPrice: 878.48, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/header.jpg" },
-                { id: 50, title: "Grand Theft Auto IV The Complete Edition", price: 24.25, originalPrice: 277.77, discount: 91, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/12210/header.jpg" },
-                { id: 51, title: "Resident Evil Village", price: 59.40, originalPrice: 594.19, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1196590/header.jpg" },
-                { id: 52, title: "Resident Evil 3", price: 34.80, originalPrice: 597.28, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/952060/header.jpg" },
-                { id: 53, title: "Resident Evil 2", price: 17.22, originalPrice: 491.84, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/883710/header.jpg" },
-                { id: 54, title: "Resident Evil 7 Biohazard", price: 34.80, originalPrice: 281.21, discount: 88, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/418370/header.jpg" },
-                { id: 55, title: "Far Cry 5", price: 34.80, originalPrice: 632.50, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/552520/header.jpg" },
-                { id: 56, title: "Far Cry 4", price: 17.22, originalPrice: 316.02, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/298110/header.jpg" },
-                { id: 57, title: "Far Cry 3", price: 17.22, originalPrice: 210.91, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/220240/header.jpg" },
-                { id: 58, title: "UNCHARTED Legacy of Thieves Collection", price: 52.38, originalPrice: 878.48, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1659420/header.jpg" },
-                { id: 59, title: "RoadCraft", price: 52.38, originalPrice: 702.72, discount: 93, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519120/header.jpg" },
-                { id: 60, title: "Euro Truck Simulator 2", price: 52.38, originalPrice: 280.86, discount: 81, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/227300/header.jpg" },
-                { id: 61, title: "BeamNG.drive", price: 34.80, originalPrice: 242.55, discount: 86, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/284160/header.jpg" },
-                { id: 62, title: "Starfield", price: 52.38, originalPrice: 1054.37, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1716740/header.jpg" },
-                { id: 63, title: "Mortal Kombat 11", price: 52.38, originalPrice: 808.28, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/976310/header.jpg" },
-                { id: 64, title: "NARUTO X BORUTO Ultimate Ninja Storm CONNECTIONS", price: 69.95, originalPrice: 808.28, discount: 91, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1020790/header.jpg" },
-                { id: 65, title: "NARUTO SHIPPUDEN Ultimate Ninja Storm 4", price: 34.80, originalPrice: 280.86, discount: 88, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/349040/header.jpg" },
-                { id: 66, title: "Palworld", price: 34.80, originalPrice: 316.02, discount: 89, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1623730/header.jpg" },
-                { id: 67, title: "HumanitZ", price: 34.80, originalPrice: 140.26, discount: 75, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1724200/header.jpg" },
-                { id: 68, title: "Project Zomboid", price: 34.80, originalPrice: 210.60, discount: 83, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/108600/header.jpg" },
-                { id: 69, title: "Overcooked", price: 17.22, originalPrice: 179.27, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/448510/header.jpg" },
-                { id: 70, title: "Farming Simulator 22", price: 52.38, originalPrice: 632.50, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1248130/header.jpg" },
-                { id: 71, title: "Car Mechanic Simulator 2021", price: 34.80, originalPrice: 280.86, discount: 88, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1190000/header.jpg" },
-                { id: 72, title: "Assetto Corsa", price: 17.22, originalPrice: 210.91, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/244210/header.jpg" },
-                { id: 73, title: "Nioh 2 The Complete Edition", price: 34.80, originalPrice: 878.48, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1325200/header.jpg" },
-                { id: 74, title: "Hollow Knight", price: 17.22, originalPrice: 175.43, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg" },
-                { id: 75, title: "Cuphead", price: 17.22, originalPrice: 140.26, discount: 88, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/268910/header.jpg" },
-                { id: 76, title: "Sonic Mania", price: 17.22, originalPrice: 351.21, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/584400/header.jpg" },
-                { id: 77, title: "Crash Bandicoot N. Sane Trilogy", price: 34.80, originalPrice: 773.09, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/731490/header.jpg" },
-                { id: 78, title: "Riders Republic", price: 34.80, originalPrice: 597.65, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2290180/header.jpg" },
-                { id: 79, title: "Tony Hawk's Pro Skater 1 + 2", price: 34.80, originalPrice: 316.02, discount: 89, image: "https://www.tonyhawkthegame.com/br/pt/1+2" },
-                { id: 80, title: "Stardew Valley", price: 17.22, originalPrice: 105.10, discount: 84, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg" },
-                { id: 81, title: "Sifu", price: 17.22, originalPrice: 280.86, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2138710/header.jpg" },
-                { id: 82, title: "Schedule I", price: 34.80, originalPrice: 210.91, discount: 83, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2221700/header.jpg" },
-                { id: 83, title: "Resident Evil 4 (2005)", price: 17.22, originalPrice: 281.21, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/254700/header.jpg" },
-                { id: 84, title: "Call of Duty Black Ops", price: 34.80, originalPrice: 773.09, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/42700/header.jpg" },
-                { id: 85, title: "Call of Duty Black Ops II", price: 45.35, originalPrice: 1159.82, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/202970/header.jpg" },
-                { id: 86, title: "Call of Duty Black Ops III", price: 52.38, originalPrice: 1159.82, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/311210/header.jpg" },
-                { id: 87, title: "Sons of the Forest", price: 34.80, originalPrice: 316.02, discount: 89, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1326470/header.jpg" },
-                { id: 88, title: "Lossless Scaling", price: 17.22, originalPrice: 69.95, discount: 75, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/993090/header.jpg" },
-                { id: 89, title: "FIVE NIGHTS AT FREDDY'S HELP WANTED", price: 34.80, originalPrice: 210.60, discount: 83, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/732690/header.jpg" },
-                { id: 90, title: "ULTRAKILL", price: 17.22, originalPrice: 175.43, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1229490/header.jpg" },
-                { id: 91, title: "Valheim", price: 34.80, originalPrice: 281.17, discount: 88, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/892970/header.jpg" },
-                { id: 92, title: "Saint Seiya Soldiers' Soul", price: 34.80, originalPrice: 316.02, discount: 89, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/353270/header.jpg" },
-                { id: 93, title: "Fallout 76", price: 24.25, originalPrice: 527.02, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1151340/header.jpg" },
-                { id: 94, title: "Fallout 4", price: 17.22, originalPrice: 280.86, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/377160/header.jpg" },
-                { id: 95, title: "Metro 2033 Redux", price: 34.80, originalPrice: 348.00, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/286690/header.jpg" },
-                { id: 96, title: "Metro Last Light Redux", price: 34.80, originalPrice: 348.00, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/287390/header.jpg" }
+                // Adicionando os jogos faltantes primeiro
+                { 
+                    id: 117, 
+                    title: "Astra Menu FiveM", 
+                    originalPrice: 0,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://via.placeholder.com/300x200/8a2be2/ffffff?text=Astra+Menu+FiveM",
+                    specialBadge: "🍁 MOD MENU"
+                },
+                { 
+                    id: 118, 
+                    title: "UPAGEM DE CONTA GTA 5 ONLINE Enhanced | Legacy", 
+                    originalPrice: 0,
+                    price: calcularPrecoComAumento(12.90),
+                    image: "https://via.placeholder.com/300x200/00bfff/ffffff?text=GTA+5+Upagem",
+                    specialBadge: "📦 SERVIÇO"
+                },
+                // Continuação dos jogos existentes
+                { 
+                    id: 19, 
+                    title: "Elden Ring Nightreign", 
+                    originalPrice: 0,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202501/2901/9ff4b9fde2b7dce20fa282961454b7a81695d598eb5c7404.png" 
+                },
+                { 
+                    id: 20, 
+                    title: "Need for Speed™ Most Wanted", 
+                    originalPrice: 79.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1262560/header.jpg" 
+                },
+                { 
+                    id: 21, 
+                    title: "Forza Horizon 5", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://image.api.playstation.com/vulcan/ap/rnd/202108/0421/yfKCs2ELB5MqO4MgC2A3E6Fy.png" 
+                },
+                { 
+                    id: 22, 
+                    title: "Forza Horizon 4", 
+                    originalPrice: 199.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1293830/header.jpg" 
+                },
+                { 
+                    id: 23, 
+                    title: "SILENT HILL 2", 
+                    originalPrice: 349.90,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/header.jpg" 
+                },
+                { 
+                    id: 24, 
+                    title: "S.T.A.L.K.E.R. 2: Heart of Chornobyl", 
+                    originalPrice: 239.90,
+                    price: calcularPrecoComAumento(29.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1643320/header.jpg" 
+                },
+                { 
+                    id: 25, 
+                    title: "Metal Gear Solid V: The Phantom Pain", 
+                    originalPrice: 129.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/287700/header.jpg" 
+                },
+                { 
+                    id: 26, 
+                    title: "Metro Exodus", 
+                    originalPrice: 149.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/412020/header.jpg" 
+                },
+                { 
+                    id: 27, 
+                    title: "The Elder Scrolls IV: Oblivion Remastered", 
+                    originalPrice: 264.90,
+                    price: calcularPrecoComAumento(24.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/22330/header.jpg" 
+                },
+                { 
+                    id: 28, 
+                    title: "Ready or Not", 
+                    originalPrice: 149.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/header.jpg" 
+                },
+                { 
+                    id: 29, 
+                    title: "Raft", 
+                    originalPrice: 39.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/648800/header.jpg" 
+                },
+                { 
+                    id: 30, 
+                    title: "Stray", 
+                    originalPrice: 49.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg" 
+                },
+                { 
+                    id: 31, 
+                    title: "Split Fiction", 
+                    originalPrice: 199.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2687570/header.jpg" 
+                },
+                { 
+                    id: 32, 
+                    title: "The Elder Scrolls V: Skyrim Special Edition", 
+                    originalPrice: 39.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/489830/header.jpg" 
+                },
+                { 
+                    id: 33, 
+                    title: "Detroit: Become Human", 
+                    originalPrice: 49.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1222140/header.jpg" 
+                },
+                { 
+                    id: 34, 
+                    title: "Baldur's Gate 3", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg" 
+                },
+                { 
+                    id: 35, 
+                    title: "BLEACH Rebirth of Souls", 
+                    originalPrice: 279.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1689620/header.jpg" 
+                },
+                { 
+                    id: 36, 
+                    title: "Devil May Cry 5", 
+                    originalPrice: 119.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/601150/header.jpg" 
+                },
+                { 
+                    id: 37, 
+                    title: "Devil May Cry 4", 
+                    originalPrice: 89.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/329050/header.jpg" 
+                },
+                { 
+                    id: 38, 
+                    title: "Horizon Forbidden West™ Complete Edition", 
+                    originalPrice: 299.90,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2420110/header.jpg" 
+                },
+                { 
+                    id: 39, 
+                    title: "Horizon Zero Dawn™ Complete Edition", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1151640/header.jpg" 
+                },
+                { 
+                    id: 40, 
+                    title: "Dragon Ball: Sparking! Zero", 
+                    originalPrice: 444.90,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1790600/header.jpg" 
+                },
+                { 
+                    id: 41, 
+                    title: "Death Stranding Director's Cut", 
+                    originalPrice: 159.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1850570/header.jpg" 
+                },
+                { 
+                    id: 42, 
+                    title: "171", 
+                    originalPrice: 59.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1269370/header.jpg" 
+                },
+                { 
+                    id: 43, 
+                    title: "DARK SOULS™ II", 
+                    originalPrice: 159.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/236430/header.jpg" 
+                },
+                { 
+                    id: 44, 
+                    title: "DARK SOULS™ III", 
+                    originalPrice: 229.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/374320/header.jpg" 
+                },
+                { 
+                    id: 45, 
+                    title: "DARK SOULS™: REMASTERED", 
+                    originalPrice: 159.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/570940/header.jpg" 
+                },
+                { 
+                    id: 46, 
+                    title: "Sekiro™: Shadows Die Twice - GOTY Edition", 
+                    originalPrice: 139.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/814380/header.jpg" 
+                },
+                { 
+                    id: 47, 
+                    title: "Shadow of the Tomb Raider: Definitive Edition", 
+                    originalPrice: 119.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/750920/header.jpg" 
+                },
+                { 
+                    id: 48, 
+                    title: "Marvel's Spider-Man: Miles Morales", 
+                    originalPrice: 199.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1817190/header.jpg" 
+                },
+                { 
+                    id: 49, 
+                    title: "Marvel's Spider-Man Remastered", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/header.jpg" 
+                },
+                { 
+                    id: 50, 
+                    title: "Grand Theft Auto IV: The Complete Edition", 
+                    originalPrice: 79.00,
+                    price: calcularPrecoComAumento(6.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/12210/header.jpg" 
+                },
+                { 
+                    id: 51, 
+                    title: "Resident Evil Village", 
+                    originalPrice: 169.00,
+                    price: calcularPrecoComAumento(16.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1196590/header.jpg" 
+                },
+                { 
+                    id: 52, 
+                    title: "Resident Evil 3", 
+                    originalPrice: 169.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/952060/header.jpg" 
+                },
+                { 
+                    id: 53, 
+                    title: "Resident Evil 2", 
+                    originalPrice: 139.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/883710/header.jpg" 
+                },
+                { 
+                    id: 54, 
+                    title: "Resident Evil 7 Biohazard", 
+                    originalPrice: 80.00,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/418370/header.jpg" 
+                },
+                { 
+                    id: 55, 
+                    title: "Far Cry® 5", 
+                    originalPrice: 179.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/552520/header.jpg" 
+                },
+                { 
+                    id: 56, 
+                    title: "Far Cry® 4", 
+                    originalPrice: 89.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/298110/header.jpg" 
+                },
+                { 
+                    id: 57, 
+                    title: "Far Cry 3", 
+                    originalPrice: 59.99,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/220240/header.jpg" 
+                },
+                { 
+                    id: 58, 
+                    title: "UNCHARTED™: Legacy of Thieves Collection", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1659420/header.jpg" 
+                },
+                { 
+                    id: 59, 
+                    title: "RoadCraft", 
+                    originalPrice: 199.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519120/header.jpg" 
+                },
+                { 
+                    id: 60, 
+                    title: "Euro Truck Simulator 2", 
+                    originalPrice: 79.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/227300/header.jpg" 
+                },
+                { 
+                    id: 61, 
+                    title: "BeamNG.drive", 
+                    originalPrice: 69.00,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/284160/header.jpg" 
+                },
+                { 
+                    id: 62, 
+                    title: "Starfield", 
+                    originalPrice: 299.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1716740/header.jpg" 
+                },
+                { 
+                    id: 63, 
+                    title: "Mortal Kombat 11", 
+                    originalPrice: 229.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/976310/header.jpg" 
+                },
+                { 
+                    id: 64, 
+                    title: "NARUTO X BORUTO Ultimate Ninja Storm CONNECTIONS", 
+                    originalPrice: 229.90,
+                    price: calcularPrecoComAumento(19.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1020790/header.jpg" 
+                },
+                { 
+                    id: 65, 
+                    title: "NARUTO SHIPPUDEN: Ultimate Ninja Storm 4", 
+                    originalPrice: 79.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/349040/header.jpg" 
+                },
+                { 
+                    id: 66, 
+                    title: "Palworld", 
+                    originalPrice: 89.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1623730/header.jpg" 
+                },
+                { 
+                    id: 67, 
+                    title: "HumanitZ", 
+                    originalPrice: 39.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1724200/header.jpg" 
+                },
+                { 
+                    id: 68, 
+                    title: "Project Zomboid", 
+                    originalPrice: 59.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/108600/header.jpg" 
+                },
+                { 
+                    id: 69, 
+                    title: "Overcooked", 
+                    originalPrice: 51.00,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/448510/header.jpg" 
+                },
+                { 
+                    id: 70, 
+                    title: "Farming Simulator 22", 
+                    originalPrice: 179.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1248130/header.jpg" 
+                },
+                { 
+                    id: 71, 
+                    title: "Car Mechanic Simulator 2021", 
+                    originalPrice: 79.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1190000/header.jpg" 
+                },
+                { 
+                    id: 72, 
+                    title: "Assetto Corsa", 
+                    originalPrice: 59.99,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/244210/header.jpg" 
+                },
+                { 
+                    id: 73, 
+                    title: "Nioh 2 – The Complete Edition", 
+                    originalPrice: 249.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1325200/header.jpg" 
+                },
+                { 
+                    id: 74, 
+                    title: "Hollow Knight", 
+                    originalPrice: 49.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg" 
+                },
+                { 
+                    id: 75, 
+                    title: "Cuphead", 
+                    originalPrice: 39.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/268910/header.jpg" 
+                },
+                { 
+                    id: 76, 
+                    title: "Sonic Mania", 
+                    originalPrice: 99.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/584400/header.jpg" 
+                },
+                { 
+                    id: 77, 
+                    title: "Crash Bandicoot™ N. Sane Trilogy", 
+                    originalPrice: 219.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/731490/header.jpg" 
+                },
+                { 
+                    id: 78, 
+                    title: "Riders Republic", 
+                    originalPrice: 169.99,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2290180/header.jpg" 
+                },
+                { 
+                    id: 79, 
+                    title: "Tony Hawk's™ Pro Skater™ 1 + 2", 
+                    originalPrice: 89.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1324770/header.jpg" 
+                },
+                { 
+                    id: 80, 
+                    title: "Stardew Valley", 
+                    originalPrice: 29.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg" 
+                },
+                { 
+                    id: 81, 
+                    title: "Sifu", 
+                    originalPrice: 79.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2138710/header.jpg" 
+                },
+                { 
+                    id: 82, 
+                    title: "Schedule I", 
+                    originalPrice: 59.99,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2221700/header.jpg" 
+                },
+                { 
+                    id: 83, 
+                    title: "Resident Evil 4 (2005)", 
+                    originalPrice: 80.00,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/254700/header.jpg" 
+                },
+                { 
+                    id: 84, 
+                    title: "Call of Duty®: Black Ops", 
+                    originalPrice: 219.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/42700/header.jpg" 
+                },
+                { 
+                    id: 85, 
+                    title: "Call of Duty®: Black Ops II", 
+                    originalPrice: 329.90,
+                    price: calcularPrecoComAumento(12.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/202970/header.jpg" 
+                },
+                { 
+                    id: 86, 
+                    title: "Call of Duty®: Black Ops III", 
+                    originalPrice: 329.90,
+                    price: calcularPrecoComAumento(14.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/311210/header.jpg" 
+                },
+                { 
+                    id: 87, 
+                    title: "Sons Of The Forest", 
+                    originalPrice: 89.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1326470/header.jpg" 
+                },
+                { 
+                    id: 88, 
+                    title: "Lossless Scaling", 
+                    originalPrice: 19.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/993090/header.jpg" 
+                },
+                { 
+                    id: 89, 
+                    title: "FIVE NIGHTS AT FREDDY'S: HELP WANTED", 
+                    originalPrice: 59.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/732690/header.jpg" 
+                },
+                { 
+                    id: 90, 
+                    title: "ULTRAKILL", 
+                    originalPrice: 49.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1229490/header.jpg" 
+                },
+                { 
+                    id: 91, 
+                    title: "Valheim", 
+                    originalPrice: 79.99,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/892970/header.jpg" 
+                },
+                { 
+                    id: 92, 
+                    title: "Saint Seiya: Soldiers' Soul", 
+                    originalPrice: 89.90,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/353270/header.jpg" 
+                },
+                { 
+                    id: 93, 
+                    title: "Fallout 76", 
+                    originalPrice: 149.90,
+                    price: calcularPrecoComAumento(6.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1151340/header.jpg" 
+                },
+                { 
+                    id: 94, 
+                    title: "Fallout 4", 
+                    originalPrice: 79.90,
+                    price: calcularPrecoComAumento(4.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/377160/header.jpg" 
+                },
+                { 
+                    id: 95, 
+                    title: "Metro 2033 Redux", 
+                    originalPrice: 99.00,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/286690/header.jpg" 
+                },
+                { 
+                    id: 96, 
+                    title: "Metro: Last Light Redux", 
+                    originalPrice: 99.00,
+                    price: calcularPrecoComAumento(9.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/287390/header.jpg" 
+                }
             ],
             apenas12: [
-                { id: 97, title: "The Walking Dead Survival Instinct", price: 13.71, originalPrice: 421.45, discount: 97, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/221260/header.jpg" },
-                { id: 98, title: "Tomb Raider", price: 13.71, originalPrice: 245.73, discount: 94, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/203160/header.jpg" },
-                { id: 99, title: "Just Cause 3", price: 13.71, originalPrice: 175.43, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/225540/header.jpg" },
-                { id: 100, title: "Rayman Origins", price: 13.71, originalPrice: 210.60, discount: 93, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/207490/header.jpg" },
-                { id: 101, title: "Manhunt", price: 13.71, originalPrice: 69.95, discount: 80, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/12100/header.jpg" },
-                { id: 102, title: "Devil May Cry 3 Special Edition", price: 13.71, originalPrice: 175.43, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/6550/header.jpg" },
-                { id: 103, title: "LIMBO", price: 13.71, originalPrice: 140.26, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/48000/header.jpg" },
-                { id: 104, title: "LEGO Batman The Videogame", price: 13.71, originalPrice: 105.10, discount: 87, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/21000/header.jpg" },
-                { id: 105, title: "Left 4 Dead 2", price: 13.71, originalPrice: 140.26, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/550/header.jpg" },
-                { id: 106, title: "Internet Cafe Simulator", price: 13.71, originalPrice: 175.43, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/914100/header.jpg" },
-                { id: 107, title: "INSIDE", price: 13.71, originalPrice: 263.27, discount: 95, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/304430/header.jpg" },
-                { id: 108, title: "Grand Theft Auto San Andreas", price: 13.71, originalPrice: 175.43, discount: 92, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/12120/header.jpg" },
-                { id: 109, title: "Rise of the Tomb Raider", price: 13.71, originalPrice: 439.07, discount: 97, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/391220/header.jpg" },
-                { id: 110, title: "Mortal Kombat Komplete Edition", price: 13.71, originalPrice: 210.60, discount: 93, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/237110/header.jpg" },
-                { id: 111, title: "Sleeping Dogs", price: 13.71, originalPrice: 210.60, discount: 93, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/202170/header.jpg" },
-                { id: 112, title: "The Witcher 3 Wild Hunt", price: 13.71, originalPrice: 316.02, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg" },
-                { id: 113, title: "Outlast", price: 13.71, originalPrice: 210.60, discount: 93, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/238320/header.jpg" },
-                { id: 114, title: "Far Cry Primal", price: 13.71, originalPrice: 316.02, discount: 96, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/371660/header.jpg" },
-                { id: 115, title: "Crash Bandicoot 4 It's About Time", price: 13.71, originalPrice: 702.72, discount: 98, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1378990/header.jpg" },
-                { id: 116, title: "Bully Scholarship Edition", price: 13.71, originalPrice: 140.60, discount: 90, image: "https://cdn.cloudflare.steamstatic.com/steam/apps/12200/header.jpg" }
+                { 
+                    id: 97, 
+                    title: "The Walking Dead™: Survival Instinct", 
+                    originalPrice: 119.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/221260/header.jpg" 
+                },
+                { 
+                    id: 98, 
+                    title: "Tomb Raider", 
+                    originalPrice: 69.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/203160/header.jpg" 
+                },
+                { 
+                    id: 99, 
+                    title: "Just Cause™ 3", 
+                    originalPrice: 49.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/225540/header.jpg" 
+                },
+                { 
+                    id: 100, 
+                    title: "Rayman® Origins", 
+                    originalPrice: 59.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/207490/header.jpg" 
+                },
+                { 
+                    id: 101, 
+                    title: "Manhunt", 
+                    originalPrice: 19.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/12100/header.jpg" 
+                },
+                { 
+                    id: 102, 
+                    title: "Devil May Cry 3: Special Edition", 
+                    originalPrice: 49.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/6550/header.jpg" 
+                },
+                { 
+                    id: 103, 
+                    title: "LIMBO", 
+                    originalPrice: 39.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/48000/header.jpg" 
+                },
+                { 
+                    id: 104, 
+                    title: "LEGO® Batman™: The Videogame", 
+                    originalPrice: 29.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/21000/header.jpg" 
+                },
+                { 
+                    id: 105, 
+                    title: "Left 4 Dead 2", 
+                    originalPrice: 39.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/550/header.jpg" 
+                },
+                { 
+                    id: 106, 
+                    title: "Internet Cafe Simulator", 
+                    originalPrice: 49.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/914100/header.jpg" 
+                },
+                { 
+                    id: 107, 
+                    title: "INSIDE", 
+                    originalPrice: 74.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/304430/header.jpg" 
+                },
+                { 
+                    id: 108, 
+                    title: "Grand Theft Auto: San Andreas", 
+                    originalPrice: 49.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/12120/header.jpg" 
+                },
+                { 
+                    id: 109, 
+                    title: "Rise of the Tomb Raider™", 
+                    originalPrice: 124.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/391220/header.jpg" 
+                },
+                { 
+                    id: 110, 
+                    title: "Mortal Kombat Komplete Edition", 
+                    originalPrice: 59.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/237110/header.jpg" 
+                },
+                { 
+                    id: 111, 
+                    title: "Sleeping Dogs", 
+                    originalPrice: 59.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/202170/header.jpg" 
+                },
+                { 
+                    id: 112, 
+                    title: "The Witcher 3: Wild Hunt", 
+                    originalPrice: 89.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg" 
+                },
+                { 
+                    id: 113, 
+                    title: "Outlast", 
+                    originalPrice: 59.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/238320/header.jpg" 
+                },
+                { 
+                    id: 114, 
+                    title: "Far Cry® Primal", 
+                    originalPrice: 89.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/371660/header.jpg" 
+                },
+                { 
+                    id: 115, 
+                    title: "Crash Bandicoot™ 4: It's About Time", 
+                    originalPrice: 199.90,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1378990/header.jpg" 
+                },
+                { 
+                    id: 116, 
+                    title: "Bully: Scholarship Edition", 
+                    originalPrice: 39.99,
+                    price: calcularPrecoComAumento(3.90),
+                    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/12200/header.jpg" 
+                }
             ]
         };
 
+        // ============================================
+        // FUNÇÕES DE RENDERIZAÇÃO
+        // ============================================
+
         // Function to create game card HTML
         function createGameCard(game, showBestSeller = false) {
-            const discountBadge = game.discount > 0 ? `<div class="discount-badge">-${game.discount}%</div>` : '';
+            // Calcular desconto dinamicamente
+            const discount = game.originalPrice > 0 
+                ? calcularDesconto(game.originalPrice, game.price)
+                : 0;
+            
+            const discountBadge = discount > 0 ? `<div class="discount-badge">-${discount}%</div>` : '';
             const bestSellerBadge = showBestSeller && game.bestSeller ? '<div class="best-seller-badge">🔥 Mais vendido</div>' : '';
-            const priceDisplay = game.price === 0 ? 'Gratuito' : `R$${game.price.toFixed(2)}`;
-            const originalPriceDisplay = game.originalPrice === 0 ? '' : `R$${game.originalPrice.toFixed(2)}`;
+            const specialBadge = game.specialBadge ? `<div class="special-badge">${game.specialBadge}</div>` : '';
+            
+            const priceDisplay = `R$${game.price.toFixed(2)}`;
+            const originalPriceDisplay = game.originalPrice > 0 ? `<span class="original-price">R$${game.originalPrice.toFixed(2)}</span>` : '';
             
             return `
                 <div class="game-card">
                     <img src="${game.image}" alt="${game.title}" class="game-img">
                     ${discountBadge}
                     ${bestSellerBadge}
+                    ${specialBadge}
                     <div class="game-info">
                         <h3 class="game-title">${game.title}</h3>
                         <div class="game-price">
                             <span class="current-price">${priceDisplay}</span>
-                            ${originalPriceDisplay ? `<span class="original-price">${originalPriceDisplay}</span>` : ''}
+                            ${originalPriceDisplay}
                         </div>
                         <button class="buy-btn" onclick="showDiscordModal('${game.title.replace(/'/g, "\\'")}')">
                             <i class="fab fa-discord"></i> Comprar via Discord
@@ -911,7 +1676,10 @@
             }
         }
 
-        // Discord Modal Functions
+        // ============================================
+        // FUNÇÕES DO MODAL DISCORD
+        // ============================================
+
         let currentGameTitle = '';
 
         function showDiscordModal(gameTitle) {
@@ -926,10 +1694,7 @@
         }
 
         function openDiscord() {
-            // Tenta abrir o Discord app
             window.location.href = 'https://discord.gg/aTudf8WM';
-            
-            // Fallback para web após 2 segundos
             setTimeout(() => {
                 window.open('https://discord.gg/aTudf8WM', '_blank');
             }, 2000);
@@ -940,7 +1705,6 @@
             navigator.clipboard.writeText(command).then(() => {
                 alert('✅ Comando copiado! Agora vá para o Discord e cole no canal #comprar-aqui');
             }).catch(() => {
-                // Fallback para navegadores antigos
                 const textArea = document.createElement('textarea');
                 textArea.value = command;
                 document.body.appendChild(textArea);
@@ -958,7 +1722,10 @@
             });
         }
 
-        // Initialize the page
+        // ============================================
+        // INICIALIZAÇÃO DA PÁGINA
+        // ============================================
+
         document.addEventListener('DOMContentLoaded', function() {
             // Render all game sections
             renderGames('#novidades-games', gamesData.novidades);
