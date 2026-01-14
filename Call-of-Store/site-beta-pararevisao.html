@@ -40,7 +40,7 @@
         }
 
         /* ============================================
-           SISTEMA DE RASTRO OTIMIZADO (MAIS RESPONSIVO)
+           SISTEMA DE RASTRO OTIMIZADO
            ============================================ */
         .trail-container {
             position: fixed;
@@ -50,7 +50,6 @@
             height: 100%;
             pointer-events: none;
             z-index: 99999;
-            /* Otimizações de performance */
             will-change: transform;
             transform: translateZ(0);
         }
@@ -62,7 +61,6 @@
             pointer-events: none;
             z-index: 99999;
             transform-origin: center;
-            /* Otimização */
             will-change: transform, opacity;
         }
 
@@ -77,7 +75,7 @@
             }
         }
 
-        /* RASTRO COLORIDO PARA FORA DAS JANELAS (NOVO) */
+        /* RASTRO COLORIDO */
         .trail-particle.rainbow {
             width: 6px;
             height: 6px;
@@ -86,7 +84,7 @@
             box-shadow: 0 0 8px currentColor;
         }
 
-        /* Estilos de trail para cada seção (mantidos) */
+        /* Estilos de trail para cada seção */
         .trail-particle.water {
             background: radial-gradient(circle, #00dbde 0%, #00bfff 50%, #0077ff 100%);
             box-shadow: 0 0 8px #00bfff, 0 0 12px #00dbde;
@@ -124,12 +122,12 @@
         }
 
         /* ============================================
-           LOGO COM ANIMAÇÃO NAS LETRAS E SEM FUNDO
+           LOGO COM ANIMAÇÃO
            ============================================ */
         .logo {
             display: flex;
             align-items: center;
-            font-size: 2rem; /* Aumentado para melhor visualização */
+            font-size: 2rem;
             font-weight: 900;
             color: transparent;
             text-decoration: none;
@@ -138,18 +136,12 @@
             overflow: visible;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            padding: 5px 15px; /* Reduzido padding */
+            padding: 5px 15px;
             background: none;
             border: none;
             box-shadow: none;
             white-space: nowrap;
             z-index: 10;
-        }
-
-        /* Removido o fundo e bordas anteriores */
-        .logo::before,
-        .logo::after {
-            display: none;
         }
 
         .logo span {
@@ -235,7 +227,7 @@
         }
 
         /* ============================================
-           MENU LATERAL MUITO MAIS BONITO (CORRIGIDO - ITENS NA MESMA LINHA)
+           MENU LATERAL
            ============================================ */
         nav ul {
             display: flex;
@@ -335,7 +327,7 @@
         nav ul li:nth-child(6) a::after { content: ' 📚'; }
 
         /* ============================================
-           BOTÃO "VER CATÁLOGO" COM MESMA ANIMAÇÃO DO MENU
+           BOTÃO "VER CATÁLOGO"
            ============================================ */
         .hero .catalog-btn {
             margin-top: 40px;
@@ -418,7 +410,7 @@
         }
 
         /* ============================================
-           REDES SOCIAIS NO LADO DIREITO (NOVO)
+           REDES SOCIAIS NO LADO DIREITO
            ============================================ */
         .social-sidebar {
             position: fixed;
@@ -454,7 +446,7 @@
         }
 
         .social-sidebar a:nth-child(2) {
-            background: linear-gradient(135deg, #000000, #333333); /* TIKTOK PRETO */
+            background: linear-gradient(135deg, #000000, #333333);
             animation-delay: 0.2s;
         }
 
@@ -489,7 +481,7 @@
         }
 
         /* ============================================
-           FUNDO COM ESTRELAS CAINDO MELHORADO (OTIMIZADO)
+           FUNDO COM ESTRELAS CAINDO
            ============================================ */
         #stars-bg {
             position: fixed;
@@ -509,12 +501,10 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             filter: drop-shadow(0 0 5px currentColor);
             opacity: 0.9;
-            /* Otimização */
             will-change: transform, opacity;
         }
 
-        /* Menos estrelas para reduzir lag */
-        .star:nth-child(1n) { /* Estrelas brancas brilhantes */
+        .star:nth-child(1n) {
             width: 3px;
             height: 3px;
             background: radial-gradient(circle at 30% 30%, white, #cccccc);
@@ -522,7 +512,7 @@
             box-shadow: 0 0 10px white;
         }
 
-        .star:nth-child(2n) { /* Estrelas azuis cintilantes */
+        .star:nth-child(2n) {
             width: 4px;
             height: 4px;
             background: radial-gradient(circle at 30% 30%, #00dbde, #00bfff, #0077ff);
@@ -530,7 +520,7 @@
             box-shadow: 0 0 15px #00bfff;
         }
 
-        .star:nth-child(3n) { /* Estrelas roxas vibrantes */
+        .star:nth-child(3n) {
             width: 5px;
             height: 5px;
             background: radial-gradient(circle at 30% 30%, #8a2be2, #ff4081, #ff00ff);
@@ -538,7 +528,7 @@
             box-shadow: 0 0 20px #ff4081;
         }
 
-        .star:nth-child(4n) { /* Estrelas douradas reluzentes */
+        .star:nth-child(4n) {
             width: 6px;
             height: 6px;
             background: radial-gradient(circle at 30% 30%, #ffd700, #ff9800, #ff4500);
@@ -564,7 +554,7 @@
         }
 
         /* ============================================
-           ANIMAÇÕES DE ENTRADA RÁPIDAS E VARIADAS
+           ANIMAÇÕES DE ENTRADA RÁPIDAS
            ============================================ */
         .fade-up-fast {
             opacity: 0;
@@ -695,7 +685,7 @@
         }
 
         /* ============================================
-           ANIMAÇÃO ARCO-ÍRIS PARA MODAL - BORDAS COLORIDAS
+           ANIMAÇÃO ARCO-ÍRIS PARA MODAL
            ============================================ */
         @keyframes rainbowBorder {
             0% {
@@ -729,7 +719,7 @@
         }
 
         /* ============================================
-           MODAIS PARA AVALIAÇÕES, TERMOS E FAQ
+           MODAIS PARA TERMOS E FAQ
            ============================================ */
         .modal-info {
             display: none;
@@ -797,184 +787,6 @@
         }
 
         /* ============================================
-           ESTILOS PARA O FORMULÁRIO DE AVALIAÇÕES
-           ============================================ */
-        .add-review-container {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .add-review-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            margin: 0 auto 20px;
-        }
-
-        .add-review-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
-        }
-
-        /* Modal para adicionar avaliação (em cima do modal de avaliações) */
-        .review-form-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 10002;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .review-form-content {
-            background: #1a1a2e;
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px;
-            border: 3px solid var(--primary-color);
-            animation: scaleIn 0.3s ease;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .review-form-content h4 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 1.5rem;
-        }
-
-        .review-form-group {
-            margin-bottom: 20px;
-        }
-
-        .review-form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #ccc;
-            font-weight: 600;
-        }
-
-        .review-form-group input,
-        .review-form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid rgba(138, 43, 226, 0.3);
-            border-radius: 8px;
-            background: #0f0f1a;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .review-form-group input:focus,
-        .review-form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
-        }
-
-        .review-form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-            font-family: inherit;
-        }
-
-        .char-counter {
-            text-align: right;
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: 5px;
-        }
-
-        .char-counter.warning {
-            color: var(--warning-color);
-        }
-
-        .char-counter.danger {
-            color: var(--danger-color);
-        }
-
-        .stars-rating {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .star-rating-btn {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: #444;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            padding: 5px;
-        }
-
-        .star-rating-btn:hover {
-            transform: scale(1.2);
-        }
-
-        .star-rating-btn.active {
-            color: #ffd700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        .form-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .form-buttons button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-review-btn {
-            background: linear-gradient(135deg, var(--success-color), #2e7d32);
-            color: white;
-        }
-
-        .cancel-review-btn {
-            background: linear-gradient(135deg, #666, #444);
-            color: white;
-        }
-
-        .submit-review-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
-        }
-
-        .cancel-review-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(102, 102, 102, 0.4);
-        }
-
-        /* ============================================
            ESTILOS EXISTENTES COM MELHORIAS
            ============================================ */
         .container {
@@ -984,7 +796,7 @@
             padding: 0 15px;
         }
 
-        /* Header Styles com animações */
+        /* Header Styles */
         header {
             background-color: rgba(15, 15, 26, 0.95);
             backdrop-filter: blur(10px);
@@ -1023,19 +835,19 @@
             transform: rotate(90deg);
         }
 
-        /* Hero Section - TOTALMENTE REMOVIDA A JANELA ROXA */
+        /* Hero Section */
         .hero {
-            background: transparent; /* Removido fundo roxo */
-            padding: 120px 0 40px; /* Reduzido padding */
+            background: transparent;
+            padding: 60px 0 20px;
             text-align: center;
-            margin-top: 70px;
+            margin-top: 50px;
             position: relative;
             overflow: hidden;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             text-shadow: 0 0 15px rgba(255, 64, 129, 0.7);
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
             -webkit-background-clip: text;
@@ -1046,9 +858,9 @@
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 15px;
+            margin: 0 auto 10px;
             color: #ccc;
         }
 
@@ -1058,7 +870,6 @@
             position: relative;
         }
 
-        /* REMOVER ESPAÇO BRANCO ENTRE SEÇÕES */
         #mais-vendidos {
             padding-top: 40px !important;
             padding-bottom: 40px !important;
@@ -1092,7 +903,7 @@
         }
 
         /* ============================================
-           JANELINHAS PARA TODAS AS SEÇÕES (IGUAL A APENAS R$10)
+           JANELINHAS PARA TODAS AS SEÇÕES
            ============================================ */
         .special-section {
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(0, 191, 255, 0.15));
@@ -1199,7 +1010,7 @@
         }
 
         /* ============================================
-           BORDAS DOS CARDS POR SEÇÃO - INSTANTÂNEAS (APARECE E SOME SEM DELAY)
+           BORDAS DOS CARDS POR SEÇÃO - INSTANTÂNEAS
            ============================================ */
         .games-grid {
             display: grid;
@@ -1219,7 +1030,6 @@
             animation-delay: calc(var(--i) * 0.05s);
         }
 
-        /* CORREÇÃO DAS IMAGENS - VOLTAM AO TAMANHO NORMAL */
         .game-img {
             width: 100%;
             height: 200px;
@@ -1427,7 +1237,7 @@
             font-size: 0.9rem;
         }
 
-        /* Botões por seção - CORRIGIDO: copy-btn na mesma cor do buy-btn */
+        /* Botões por seção */
         #novidades .buy-btn,
         #novidades .copy-btn {
             background: linear-gradient(135deg, #00bfff, #0099cc);
@@ -1632,7 +1442,6 @@
             overflow: hidden;
         }
 
-        /* Nova animação para os cards de informações */
         .notice-card::before {
             content: '';
             position: absolute;
@@ -1812,7 +1621,7 @@
             box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
         }
 
-        /* NOVO ESTILO PARA COPYRIGHT */
+        /* COPYRIGHT */
         .copyright {
             text-align: center;
             padding-top: 40px;
@@ -1866,7 +1675,7 @@
         }
 
         /* ============================================
-           RESPONSIVE - CORRIGIDO PARA MENU FICAR NA MESMA LINHA
+           RESPONSIVE
            ============================================ */
         @media (max-width: 1200px) {
             .logo {
@@ -1896,11 +1705,11 @@
 
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             
             .hero .catalog-btn {
@@ -1952,14 +1761,13 @@
                 padding: 30px;
             }
             
-            .review-form-content {
+            .modal-content {
                 padding: 25px;
                 margin: 20px;
             }
         }
 
         @media (max-width: 850px) {
-            /* A partir de 850px, mostrar menu mobile */
             .mobile-menu {
                 display: block;
             }
@@ -2003,7 +1811,6 @@
                 font-size: 1.5rem;
             }
             
-            /* Ocultar sidebar de redes sociais em mobile */
             .social-sidebar {
                 display: none;
             }
@@ -2011,15 +1818,15 @@
 
         @media (max-width: 768px) {
             .hero {
-                padding: 100px 0 40px;
+                padding: 80px 0 30px;
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .hero .catalog-btn {
@@ -2062,19 +1869,15 @@
                 flex-direction: column;
                 gap: 10px;
             }
-            
-            .form-buttons {
-                flex-direction: column;
-            }
         }
 
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             
             .hero p {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
             
             .hero .catalog-btn {
@@ -2137,10 +1940,6 @@
                 font-size: 1.2rem;
                 margin-right: 6px;
             }
-            
-            .review-form-content {
-                padding: 20px 15px;
-            }
         }
     </style>
 </head>
@@ -2151,7 +1950,7 @@
     <!-- Fundo com estrelas caindo -->
     <div id="stars-bg"></div>
     
-    <!-- Sidebar de redes sociais (NOVO) -->
+    <!-- Sidebar de redes sociais -->
     <div class="social-sidebar">
         <a href="https://discord.gg/3hPTerCjju" target="_blank" class="slide-right-fast">
             <i class="fab fa-discord"></i>
@@ -2189,25 +1988,52 @@
         </div>
     </header>
 
-    <!-- Hero Section - SEM JANELA ROXA -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1 class="fade-up-fast">🎮 JOGOS STEAM COM ATÉ 95% OFF! 🎮</h1>
-            <p class="fade-up-fast">Keys Originais • Entrega Imediata • Melhores Preços do Brasil</p>
-            <p class="fade-up-fast">🚀 COMPRA SEGURA VIA DISCORD</p>
-            <p class="fade-up-fast">✅ Key na sua conta Steam em menos de 5 minutos!</p>
-            <p class="fade-up-fast">🔒 Produto 100% Original • Ativação Direta na Steam</p>
-            <p class="fade-up-fast">❌ Sem conta compartilhada • ❌ Sem acesso temporário</p>
-            <p class="fade-up-fast">💰 Pague MENOS e Jogue MAIS!</p>
-            <p class="fade-up-fast">⚡ Entre no Discord e Garanta Sua Key Agora!</p>
-            <!-- Botão "Ver Catálogo" com mesma animação do menu -->
+            <h1 class="fade-up-fast">Loja Verificada e Segura</h1>
+            <p class="fade-up-fast">A Melhor Loja de Produtos Digitais</p>
+            <p class="fade-up-fast">Bem-Vindo à Force War Store! Somos conhecidos como a melhor loja no mercado de jogos digitais, oferecendo os melhores jogos com os melhores preços.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0;">
+                <div class="fade-up-fast" style="text-align: center; padding: 15px; background: rgba(138, 43, 226, 0.1); border-radius: 10px;">
+                    <h3 style="color: var(--success-color); font-size: 2rem;">100%</h3>
+                    <p>Seguro</p>
+                </div>
+                <div class="fade-up-fast" style="text-align: center; padding: 15px; background: rgba(0, 191, 255, 0.1); border-radius: 10px;">
+                    <h3 style="color: var(--secondary-color); font-size: 2rem;">⚡</h3>
+                    <p>Entrega Rápida</p>
+                </div>
+                <div class="fade-up-fast" style="text-align: center; padding: 15px; background: rgba(76, 175, 80, 0.1); border-radius: 10px;">
+                    <h3 style="color: var(--success-color); font-size: 2rem;">15D</h3>
+                    <p>Garantia</p>
+                </div>
+                <div class="fade-up-fast" style="text-align: center; padding: 15px; background: rgba(255, 64, 129, 0.1); border-radius: 10px;">
+                    <h3 style="color: var(--accent-color); font-size: 2rem;">24/7</h3>
+                    <p>Suporte</p>
+                </div>
+                <div class="fade-up-fast" style="text-align: center; padding: 15px; background: rgba(255, 152, 0, 0.1); border-radius: 10px;">
+                    <h3 style="color: var(--warning-color); font-size: 2rem;">+100</h3>
+                    <p>Clientes Satisfeitos</p>
+                </div>
+                <div class="fade-up-fast" style="text-align: center; padding: 15px; background: rgba(138, 43, 226, 0.1); border-radius: 10px;">
+                    <h3 style="color: #ffd700; font-size: 2rem;">4.8/5</h3>
+                    <p>Avaliação Média</p>
+                </div>
+                <div class="fade-up-fast" style="text-align: center; padding: 15px; background: rgba(76, 175, 80, 0.1); border-radius: 10px; grid-column: span 2;">
+                    <h3 style="color: var(--success-color); font-size: 2rem;">99.8%</h3>
+                    <p>Taxa de Satisfação</p>
+                </div>
+            </div>
+            
+            <!-- Botão "Ver Catálogo" -->
             <a href="#novidades" class="catalog-btn fade-up-fast">
-                Ver Catálogo Completo
+                Ver Catálogo
             </a>
         </div>
     </section>
 
-    <!-- Novidades Section - COM JANELINHA -->
+    <!-- Novidades Section -->
     <section id="novidades">
         <div class="container">
             <h2 class="section-title fade-in-fast">🎮 NOVIDADES QUENTES 🎮</h2>
@@ -2217,7 +2043,7 @@
         </div>
     </section>
 
-    <!-- Mais Vendidos Section - COM JANELINHA -->
+    <!-- Mais Vendidos Section -->
     <section id="mais-vendidos">
         <div class="container">
             <h2 class="section-title fade-in-fast">🏆 MAIS VENDIDOS 🏆</h2>
@@ -2227,7 +2053,7 @@
         </div>
     </section>
 
-    <!-- Populares Section - COM JANELINHA -->
+    <!-- Populares Section -->
     <section id="populares">
         <div class="container">
             <h2 class="section-title fade-in-fast">⭐ MAIS POPULARES ⭐</h2>
@@ -2237,7 +2063,7 @@
         </div>
     </section>
 
-    <!-- Apenas R$10 Section - COM JANELINHA (mantida igual) -->
+    <!-- Apenas R$10 Section -->
     <section id="apenas-10">
         <div class="container">
             <div class="special-section">
@@ -2355,7 +2181,6 @@
                     <ul>
                         <li><a href="https://discord.gg/3hPTerCjju" class="slide-right-fast">💬 Discord</a></li>
                         <li><a href="#" class="slide-right-fast">📧 Contato</a></li>
-                        <li><a href="javascript:void(0)" onclick="openModal('avaliacoes')" class="slide-right-fast">⭐ Avaliações</a></li>
                         <li><a href="javascript:void(0)" onclick="openModal('termos')" class="slide-right-fast">📄 Termos de Uso</a></li>
                         <li><a href="javascript:void(0)" onclick="openModal('privacidade')" class="slide-right-fast">🔒 Política de Privacidade</a></li>
                         <li><a href="javascript:void(0)" onclick="openModal('faq')" class="slide-right-fast">❓ FAQ</a></li>
@@ -2401,72 +2226,6 @@
                 </button>
                 <button class="modal-btn secondary" onclick="closeModal()">
                     <i class="fas fa-times"></i> Fechar
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Avaliações (ATUALIZADO - Botão no início) -->
-    <div id="avaliacoesModal" class="modal-info">
-        <div class="modal-info-content">
-            <button class="close-modal" onclick="closeInfoModal('avaliacoes')">&times;</button>
-            <h3>⭐ Avaliações dos Clientes</h3>
-            
-            <!-- Botão para adicionar nova avaliação NO TOPO -->
-            <div class="add-review-container">
-                <button class="add-review-btn" onclick="openReviewForm()">
-                    <i class="fas fa-star"></i> Deixar Minha Avaliação
-                </button>
-                <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">
-                    Conte sua experiência! (Máx: 15 caracteres no nome e 100 no comentário)
-                </p>
-            </div>
-            
-            <div id="reviews-container" style="text-align: left; margin-top: 20px;">
-                <!-- Avaliações serão carregadas aqui via JavaScript -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para adicionar avaliação (NOVO) -->
-    <div id="reviewFormModal" class="review-form-modal">
-        <div class="review-form-content">
-            <button class="close-modal" onclick="closeReviewForm()">&times;</button>
-            <h4>Deixe sua avaliação</h4>
-            
-            <div class="review-form-group">
-                <label for="reviewer-name">Seu nome (máx. 15 caracteres):</label>
-                <input type="text" id="reviewer-name" maxlength="15" placeholder="Ex: Jogador123">
-                <div class="char-counter">
-                    <span id="name-counter">0/15</span>
-                </div>
-            </div>
-            
-            <div class="review-form-group">
-                <label for="review-comment">Seu comentário (máx. 100 caracteres):</label>
-                <textarea id="review-comment" maxlength="100" placeholder="Escreva sua experiência com a loja..."></textarea>
-                <div class="char-counter">
-                    <span id="comment-counter">0/100</span>
-                </div>
-            </div>
-            
-            <div class="review-form-group">
-                <label>Avaliação:</label>
-                <div class="stars-rating">
-                    <button class="star-rating-btn" data-rating="1">☆</button>
-                    <button class="star-rating-btn" data-rating="2">☆</button>
-                    <button class="star-rating-btn" data-rating="3">☆</button>
-                    <button class="star-rating-btn" data-rating="4">☆</button>
-                    <button class="star-rating-btn" data-rating="5">☆</button>
-                </div>
-            </div>
-            
-            <div class="form-buttons">
-                <button class="submit-review-btn" onclick="submitReview()">
-                    <i class="fas fa-paper-plane"></i> Enviar Avaliação
-                </button>
-                <button class="cancel-review-btn" onclick="closeReviewForm()">
-                    <i class="fas fa-times"></i> Cancelar
                 </button>
             </div>
         </div>
@@ -2549,28 +2308,25 @@
 
     <script>
         // ============================================
-        // SISTEMA DE RASTRO OTIMIZADO (MAIS RESPONSIVO)
+        // SISTEMA DE RASTRO OTIMIZADO
         // ============================================
         class MouseTrail {
             constructor() {
                 this.container = document.querySelector('.trail-container');
                 this.mouseX = 0;
                 this.mouseY = 0;
-                this.currentTrailType = 'rainbow'; // Padrão: rastro colorido
+                this.currentTrailType = 'rainbow';
                 this.isInsideWindow = false;
                 this.particleCount = 0;
-                this.maxParticles = 25; // Aumentado para mais partículas
+                this.maxParticles = 25;
                 this.lastTime = 0;
                 this.init();
             }
 
             init() {
-                // Usar requestAnimationFrame para melhor performance
                 this.animationId = requestAnimationFrame((time) => this.updateTrail(time));
-                
                 this.detectWindowHover();
                 
-                // Mouse move para posição atual
                 const mouseMoveHandler = (e) => {
                     this.mouseX = e.clientX;
                     this.mouseY = e.clientY;
@@ -2583,8 +2339,7 @@
                 if (!this.lastTime) this.lastTime = time;
                 const deltaTime = time - this.lastTime;
                 
-                // Criar partículas baseado no tempo, não em intervalo fixo
-                if (deltaTime > 10) { // ~100 FPS
+                if (deltaTime > 10) {
                     if (this.particleCount < this.maxParticles) {
                         this.createParticle();
                     }
@@ -2600,11 +2355,9 @@
                 const particle = document.createElement('div');
                 particle.classList.add('trail-particle', this.currentTrailType);
                 
-                // Posição exata do cursor (sem offset)
                 particle.style.left = `${this.mouseX - 3}px`;
                 particle.style.top = `${this.mouseY - 3}px`;
                 
-                // Movimento mais natural
                 const tx = (Math.random() - 0.5) * 15;
                 const ty = (Math.random() - 0.5) * 15;
                 const rotation = Math.random() * 360;
@@ -2618,13 +2371,12 @@
                 this.container.appendChild(particle);
                 this.particleCount++;
                 
-                // Remove após animação
                 setTimeout(() => {
                     if (particle.parentNode) {
                         particle.parentNode.removeChild(particle);
                         this.particleCount--;
                     }
-                }, 600); // Tempo reduzido
+                }, 600);
             }
 
             detectWindowHover() {
@@ -2632,11 +2384,9 @@
                     this.mouseX = e.clientX;
                     this.mouseY = e.clientY;
                     
-                    // Verificar se está dentro de uma janelinha
                     let insideWindow = false;
-                    let trailType = 'rainbow'; // Padrão: colorido
+                    let trailType = 'rainbow';
                     
-                    // Verificar containers das seções
                     const containers = document.querySelectorAll('#novidades > .container, #mais-vendidos > .container, #populares > .container, #apenas-10 .special-section, #sobre-nos .special-section');
                     
                     containers.forEach(container => {
@@ -2651,7 +2401,6 @@
                         ) {
                             insideWindow = true;
                             
-                            // Determinar tipo de trail baseado na seção
                             const section = container.closest('section');
                             if (section) {
                                 switch(section.id) {
@@ -2686,19 +2435,19 @@
         }
 
         // ============================================
-        // SISTEMA DE ESTRELAS OTIMIZADO (MENOS LAG)
+        // SISTEMA DE ESTRELAS
         // ============================================ */
         function createStarsBackground() {
             const container = document.getElementById('stars-bg');
-            const starCount = 150; // Reduzido de 250 para 150 (menos lag)
+            const starCount = 150;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 
                 const left = Math.random() * 100;
-                const size = 1 + Math.random() * 4; // Reduzido tamanho máximo
-                const duration = 10 + Math.random() * 25; // Mais lentas
+                const size = 1 + Math.random() * 4;
+                const duration = 10 + Math.random() * 25;
                 const delay = Math.random() * 25;
                 
                 star.style.left = `${left}%`;
@@ -2706,14 +2455,11 @@
                 star.style.height = `${size}px`;
                 star.style.animationDuration = `${duration}s`;
                 star.style.animationDelay = `${delay}s`;
-                
-                // Movimento lateral reduzido
                 star.style.setProperty('--end-x', `${(Math.random() * 100 - 50)}px`);
                 
                 container.appendChild(star);
             }
             
-            // Efeito de repulsão menos intenso (melhor performance)
             let repulseActive = false;
             document.addEventListener('mousemove', (e) => {
                 if (repulseActive) return;
@@ -2743,292 +2489,12 @@
                     });
                     
                     repulseActive = false;
-                }, 50); // Debounce de 50ms
+                }, 50);
             });
         }
 
         // ============================================
-        // SISTEMA DE AVALIAÇÕES (ATUALIZADO)
-        // ============================================
-        let userReviews = [];
-        let selectedRating = 0;
-
-        // Avaliações iniciais (12 no total)
-        const initialReviews = [
-            {
-                name: "Carlindograu776",
-                rating: 5,
-                comment: "Comprei elden ring,gta 4, e The Escapists 2 para jogar com meu amigos, todos funcionaram perfeitamente infelismente nem todos tem modo online ativo mas a Entrega foi super rápida, menos de 8 minutos. Recomendo demais!",
-                date: generateDaysAgo(14)
-            },
-            {
-                name: "otakumandrake",
-                rating: 3,
-                comment: "Atendimento excelente no Discord! Comprei o Hogwarts Legacy e recebi a key em 5 minutos. Preço muito abaixo do que na steam!",
-                date: generateDaysAgo(17)
-            },
-            {
-                name: "Almeida",
-                rating: 5,
-                comment: "Já sou cliente há meses, comprei mais de 10 jogos aqui. Nunca tive problemas, sempre keys originais e funcionando.",
-                date: generateDaysAgo(20)
-            },
-            {
-                name: "larissa sousa",
-                rating: 5,
-                comment: "Comprei o Resident Evil 4 Remake e chegou perfeitamente Melhor loja de keys que já comprei!",
-                date: generateDaysAgo(23)
-            },
-            {
-                name: "Lc",
-                rating: 5,
-                comment: "Preços muito bom Key funcionou certinho.",
-                date: generateDaysAgo(26)
-            },
-            {
-                name: "GamerPro789",
-                rating: 5,
-                comment: "Comprei Cyberpunk 2077 e funcionou perfeitamente! Entrega super rápida, menos de 3 minutos. Vou comprar aqui sempre!",
-                date: generateDaysAgo(30)
-            },
-            {
-                name: "JoãoSilva22",
-                rating: 4,
-                comment: "Boa experiência, key chegou rápido. Só achei que poderia ter mais jogos com modo online ativo.",
-                date: generateDaysAgo(33)
-            },
-            {
-                name: "AnaGamerBR",
-                rating: 5,
-                comment: "Comprei The Last of Us e amei! Preço incrível e funcionou na hora. Recomendo muito!",
-                date: generateDaysAgo(37)
-            },
-            {
-                name: "PedroZika",
-                rating: 4,
-                comment: "Atendimento no Discord é rápido e educado. Comprei God of War Ragnarök e chegou em 5 min.",
-                date: generateDaysAgo(40)
-            },
-            {
-                name: "RafaelGamer",
-                rating: 5,
-                comment: "Melhor loja de keys Steam! Já comprei 7 jogos e todos funcionaram perfeitamente.",
-                date: generateDaysAgo(44)
-            },
-            {
-                name: "MariaGames",
-                rating: 5,
-                comment: "Comprei Red Dead Redemption 2, preço muito abaixo da Steam. Funcionou sem problemas!",
-                date: generateDaysAgo(47)
-            },
-            {
-                name: "LucasPlay",
-                rating: 4,
-                comment: "Key chegou rápido, mas alguns jogos não têm multiplayer. Fora isso, tudo perfeito!",
-                date: generateDaysAgo(50)
-            }
-        ];
-
-        // Função para gerar datas dinâmicas
-        function generateDaysAgo(days) {
-            const today = new Date();
-            const reviewDate = new Date(today);
-            reviewDate.setDate(today.getDate() - days);
-            
-            const day = reviewDate.getDate().toString().padStart(2, '0');
-            const month = (reviewDate.getMonth() + 1).toString().padStart(2, '0');
-            const year = reviewDate.getFullYear();
-            
-            return `Há ${days} dias (${day}/${month}/${year})`;
-        }
-
-        // Carregar avaliações do localStorage ou usar as iniciais
-        function loadReviews() {
-            const savedReviews = localStorage.getItem('callofstore_reviews');
-            if (savedReviews) {
-                userReviews = JSON.parse(savedReviews);
-            } else {
-                userReviews = [...initialReviews];
-                saveReviews();
-            }
-        }
-
-        // Salvar avaliações no localStorage
-        function saveReviews() {
-            localStorage.setItem('callofstore_reviews', JSON.stringify(userReviews));
-        }
-
-        // Renderizar avaliações
-        function renderReviews() {
-            const container = document.getElementById('reviews-container');
-            if (!container) return;
-            
-            container.innerHTML = '';
-            
-            // Ordenar por data (mais recentes primeiro)
-            const sortedReviews = [...userReviews].sort((a, b) => {
-                return new Date(b.date) - new Date(a.date);
-            });
-            
-            sortedReviews.forEach(review => {
-                const stars = '⭐'.repeat(review.rating);
-                const emptyStars = '☆'.repeat(5 - review.rating);
-                
-                const reviewElement = document.createElement('div');
-                reviewElement.style.background = '#0f0f1a';
-                reviewElement.style.padding = '15px';
-                reviewElement.style.borderRadius = '10px';
-                reviewElement.style.marginBottom = '15px';
-                reviewElement.style.borderLeft = '4px solid #4CAF50';
-                reviewElement.style.opacity = '0';
-                reviewElement.style.transform = 'translateY(10px)';
-                
-                reviewElement.innerHTML = `
-                    <strong style="color: #4CAF50;">${review.name} ${stars}${emptyStars}</strong>
-                    <p style="margin-top: 10px;">${review.comment}</p>
-                    <small style="color: #888;">${review.date}</small>
-                `;
-                
-                container.appendChild(reviewElement);
-                
-                // Animar entrada
-                setTimeout(() => {
-                    reviewElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                    reviewElement.style.opacity = '1';
-                    reviewElement.style.transform = 'translateY(0)';
-                }, 10);
-            });
-        }
-
-        // Abrir formulário de avaliação
-        function openReviewForm() {
-            document.getElementById('reviewFormModal').style.display = 'flex';
-            selectedRating = 0;
-            updateStarRating();
-            
-            // Limpar campos
-            document.getElementById('reviewer-name').value = '';
-            document.getElementById('review-comment').value = '';
-            updateCharCounters();
-            
-            // Focar no primeiro campo
-            setTimeout(() => {
-                document.getElementById('reviewer-name').focus();
-            }, 100);
-        }
-
-        // Fechar formulário de avaliação
-        function closeReviewForm() {
-            document.getElementById('reviewFormModal').style.display = 'none';
-        }
-
-        // Atualizar contadores de caracteres
-        function updateCharCounters() {
-            const nameInput = document.getElementById('reviewer-name');
-            const commentInput = document.getElementById('review-comment');
-            const nameCounter = document.getElementById('name-counter');
-            const commentCounter = document.getElementById('comment-counter');
-            
-            if (nameInput && nameCounter) {
-                const nameLength = nameInput.value.length;
-                nameCounter.textContent = `${nameLength}/15`;
-                nameCounter.className = 'char-counter' + (nameLength >= 15 ? ' danger' : nameLength >= 12 ? ' warning' : '');
-            }
-            
-            if (commentInput && commentCounter) {
-                const commentLength = commentInput.value.length;
-                commentCounter.textContent = `${commentLength}/100`;
-                commentCounter.className = 'char-counter' + (commentLength >= 100 ? ' danger' : commentLength >= 80 ? ' warning' : '');
-            }
-        }
-
-        // Configurar sistema de estrelas
-        function setupStarRating() {
-            const starButtons = document.querySelectorAll('.star-rating-btn');
-            starButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const rating = parseInt(this.getAttribute('data-rating'));
-                    selectedRating = rating;
-                    updateStarRating();
-                });
-            });
-        }
-
-        // Atualizar visualização das estrelas
-        function updateStarRating() {
-            const starButtons = document.querySelectorAll('.star-rating-btn');
-            starButtons.forEach(button => {
-                const rating = parseInt(button.getAttribute('data-rating'));
-                if (rating <= selectedRating) {
-                    button.classList.add('active');
-                    button.textContent = '★';
-                } else {
-                    button.classList.remove('active');
-                    button.textContent = '☆';
-                }
-            });
-        }
-
-        // Enviar avaliação
-        function submitReview() {
-            const nameInput = document.getElementById('reviewer-name');
-            const commentInput = document.getElementById('review-comment');
-            
-            const name = nameInput.value.trim();
-            const comment = commentInput.value.trim();
-            
-            // Validações
-            if (!name) {
-                alert('Por favor, digite seu nome.');
-                nameInput.focus();
-                return;
-            }
-            
-            if (name.length > 15) {
-                alert('O nome deve ter no máximo 15 caracteres.');
-                nameInput.focus();
-                return;
-            }
-            
-            if (!comment) {
-                alert('Por favor, digite seu comentário.');
-                commentInput.focus();
-                return;
-            }
-            
-            if (comment.length > 100) {
-                alert('O comentário deve ter no máximo 100 caracteres.');
-                commentInput.focus();
-                return;
-            }
-            
-            if (selectedRating === 0) {
-                alert('Por favor, selecione uma avaliação com as estrelas.');
-                return;
-            }
-            
-            // Criar nova avaliação
-            const newReview = {
-                name: name,
-                rating: selectedRating,
-                comment: comment,
-                date: `Hoje (${new Date().toLocaleDateString('pt-BR')})`
-            };
-            
-            // Adicionar no início do array
-            userReviews.unshift(newReview);
-            saveReviews();
-            renderReviews();
-            
-            // Fechar formulário
-            closeReviewForm();
-            
-            // Mostrar mensagem de sucesso
-            alert('✅ Avaliação enviada com sucesso! Obrigado pelo seu feedback.');
-        }
-
-        // ============================================
-        // DADOS DOS JOGOS - ORIGINAL
+        // DADOS DOS JOGOS
         // ============================================
         
         function calcularPrecoComAumento(precoOriginal) {
@@ -3342,11 +2808,6 @@
         function openModal(modalType) {
             let modalId = '';
             switch(modalType) {
-                case 'avaliacoes':
-                    modalId = 'avaliacoesModal';
-                    loadReviews();
-                    renderReviews();
-                    break;
                 case 'termos':
                     modalId = 'termosModal';
                     break;
@@ -3366,9 +2827,6 @@
         function closeInfoModal(modalType) {
             let modalId = '';
             switch(modalType) {
-                case 'avaliacoes':
-                    modalId = 'avaliacoesModal';
-                    break;
                 case 'termos':
                     modalId = 'termosModal';
                     break;
@@ -3386,7 +2844,7 @@
         }
 
         // ============================================
-        // ANIMAÇÕES DE ENTRADA AO ROLAR - MUITO MAIS RÁPIDO
+        // ANIMAÇÕES DE ENTRADA AO ROLAR
         // ============================================
         function checkScrollAnimations() {
             const elements = document.querySelectorAll('.fade-up-fast, .fade-in-fast, .scale-in-fast, .slide-left-fast, .slide-right-fast, .rotate-in');
@@ -3422,9 +2880,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             createStarsBackground();
             
-            // Carregar e renderizar avaliações
-            loadReviews();
-            
             setTimeout(() => {
                 renderGames('#novidades-games', gamesData.novidades);
                 renderGames('#mais-vendidos-games', gamesData.maisVendidos, true);
@@ -3435,7 +2890,6 @@
                     el.classList.add('visible');
                 });
                 
-                // Animar ícones da sidebar
                 setTimeout(() => {
                     document.querySelectorAll('.social-sidebar a').forEach((icon, index) => {
                         setTimeout(() => {
@@ -3464,7 +2918,6 @@
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        // Ajuste para descer um pouco mais na seção Novidades
                         const offset = targetId === '#novidades' ? 100 : 80;
                         
                         window.scrollTo({
@@ -3480,28 +2933,13 @@
             });
 
             // Fechar modais ao clicar fora
-            document.querySelectorAll('.modal, .modal-info, .review-form-modal').forEach(modal => {
+            document.querySelectorAll('.modal, .modal-info').forEach(modal => {
                 modal.addEventListener('click', function(e) {
                     if (e.target === this) {
                         this.style.display = 'none';
                     }
                 });
             });
-            
-            // Configurar sistema de avaliações
-            setupStarRating();
-            
-            // Configurar contadores de caracteres
-            const nameInput = document.getElementById('reviewer-name');
-            const commentInput = document.getElementById('review-comment');
-            
-            if (nameInput) {
-                nameInput.addEventListener('input', updateCharCounters);
-            }
-            
-            if (commentInput) {
-                commentInput.addEventListener('input', updateCharCounters);
-            }
             
             window.addEventListener('scroll', checkScrollAnimations);
             window.addEventListener('load', checkScrollAnimations);
@@ -3523,7 +2961,7 @@
             
             setTimeout(typeWriter, 300);
             
-            // Inicializar sistema de rastro do mouse (MAIS RESPONSIVO)
+            // Inicializar sistema de rastro do mouse
             const mouseTrail = new MouseTrail();
         });
     </script>
