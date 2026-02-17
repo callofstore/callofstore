@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Call of Store [PT-BR] - Loja de Keys Steam com Descontos Insanos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="carrinho.css">
+    <script src="carrinho.js" defer></script>
 </head>
 <body>
-    <!-- Vídeo de fundo do Google Drive -->
-<div class="video-background">
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="https://drive.google.com/uc?export=download&id=14Q-95cp66qchgxMqqcLWiOrE5J5QwMxn" type="video/mp4">
-        <!-- Fallback caso o vídeo não carregue -->
-        <div class="fallback-bg"></div>
-    </video>
-    <div class="video-overlay"></div>
-</div>
+    <!-- Vídeo de fundo -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="https://drive.google.com/uc?export=download&id=14Q-95cp66qchgxMqqcLWiOrE5J5QwMxn" type="video/mp4">
+            <div class="fallback-bg"></div>
+        </video>
+        <div class="video-overlay"></div>
+    </div>
 
     <!-- TELA DE CARREGAMENTO -->
     <div id="loading-screen">
@@ -95,39 +96,32 @@
     </div>
 
     <header id="main-header">
-    <div class="container header-container">
-        <a href="#" class="logo slide-left-fast">
-            <!-- OPÇÃO 1: Link do Imgur (mais fácil) -->
-            <img src="https://drive.google.com/file/d/1_X2xsMu62bBtyEUCIjL0AsCPK_X9NnHF/view?usp=drive_link"
-                 alt="Call of Store [PT-BR]" 
-                 class="logo-image">
+        <div class="container header-container">
+            <a href="#" class="logo slide-left-fast">
+                <img src="https://drive.google.com/file/d/1_X2xsMu62bBtyEUCIjL0AsCPK_X9NnHF/view?usp=drive_link" 
+                     alt="Call of Store [PT-BR]" 
+                     class="logo-image">
+                <span>Call of Store [PT-BR]</span>
+            </a>
             
-            <!-- OPÇÃO 2: Arquivo local (recomendado) -->
-            <!-- <img src="images/logo.gif" 
-                 alt="Call of Store [PT-BR]" 
-                 class="logo-image"> -->
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
             
-            <span>Call of Store [PT-BR]</span>
-        </a>
-        
-        <div class="mobile-menu">
-            <i class="fas fa-bars"></i>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="slide-left-fast">Início</a></li>
+                    <li><a href="#catalogo" class="slide-left-fast">Catálogo</a></li>
+                    <li><a href="#sobre-nos" class="slide-left-fast">Sobre-nós</a></li>
+                    <li><a href="#contato" class="slide-left-fast">Contato</a></li>
+                </ul>
+            </nav>
         </div>
-        
-        <nav>
-            <ul>
-                <li><a href="#home" class="slide-left-fast">Início</a></li>
-                <li><a href="#catalogo" class="slide-left-fast">Catálogo</a></li>
-                <li><a href="#sobre-nos" class="slide-left-fast">Sobre-nós</a></li>
-                <li><a href="#contato" class="slide-left-fast">Contato</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    </header>
 
     <section class="hero" id="home">
         <div class="container">
-            <h1 class="fade-up-fast">🎮 Call of Store [PT-BR] 🎮</h1>
+            <h1 class="fade-up-fast">🎮 Call of Store [PT-BR]🎮</h1>
             <p class="fade-up-fast">Bem-Vindo à CallOfStore! melhor loja no mercado de jogos digitais, oferecendo os melhores jogos com os melhores preços.</p>
             
             <div class="hero-stats fade-up-fast">
@@ -156,7 +150,6 @@
             <div class="special-section">
                 <h2 class="section-title fade-in-fast">🎮 CATÁLOGO COMPLETO 🎮</h2>
                 
-                <!-- Barra de pesquisa adicionada aqui -->
                 <div class="search-container">
                     <div class="search-box">
                         <input type="text" 
@@ -412,11 +405,10 @@
         </div>
     </div>
 
-    <!-- Botão de emergência para pular loading (remover em produção) -->
     <button class="skip-loading-btn" onclick="skipLoading()">
         Pular Loading
     </button>
 
-    <script src="script.js"></script>
+    <script src="site.js"></script>
 </body>
 </html>
