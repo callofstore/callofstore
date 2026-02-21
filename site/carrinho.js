@@ -2,9 +2,15 @@
 // CARRINHO DE COMPRAS - CALL OF STORE
 // ============================================
 
-const API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-    ? 'http://localhost:3000'
-    : 'https://your-production-url.com';
+// ✅ Backend do bot (Express) que vai criar o PIX e receber webhook do Mercado Pago.
+// Em produção, o ideal é o site e o backend estarem no mesmo domínio (aí window.location.origin funciona).
+// Se não estiverem, você pode setar no HTML:
+//   <script>window.API_URL = 'https://SEU_BACKEND_PUBLICO';</script>
+const API_URL = window.API_URL || (
+    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+        ? 'http://localhost:3000'
+        : window.location.origin
+);
 
 const WEBHOOK_URL = 'https://discord.com/api/webhooks/1473337974505607178/-cduwv59PzxSg41IgmQEsr-MDlb1grtATPtEAGBw8LpbndTGSj4MWCbFyGucB0n75X_B';
 
@@ -310,7 +316,7 @@ function mostrarCheckout() {
 async function enviarPedidoWebhook() {
     const nome = document.getElementById('checkout-nome')?.value || 'Não informado';
     const discordUser = document.getElementById('checkout-discord')?.value;
-    const email = document.getElementById('checkout-email')?.value || 'Não informado';
+    const email = document.getElementById('checkout-email')?.value;
     
     if (!discordUser || discordUser.trim() === '') {
         mostrarNotificacao('❌ Por favor, informe seu Discord!', 'erro');
@@ -325,19 +331,17 @@ async function enviarPedidoWebhook() {
     }
     
     const total = calcularTotal();
-    const pedidoId = Math.floor(Math.random() * 9000) + 1000;
+
+    if (!email || email.trim() === '') {
+        mostrarNotificacao('❌ Informe um email válido para gerar o PIX (Mercado Pago).', 'erro');
+        return;
+    }
     
     mostrarNotificacao('⏳ Enviando pedido...', 'info', 5000);
     
     try {
-        const API_LOCAL = 'http://localhost:3000';
-        
         const dadosPedido = {
-            pedidoId: pedidoId,
-            cliente: {
-                nome: nome,
-                discord: discordUser
-            },
+            cliente: { nome: nome, discord: discordUser },
             discordUser: discordUser,
             email: email,
             jogos: carrinho.map(item => ({
@@ -346,17 +350,15 @@ async function enviarPedidoWebhook() {
                 preco: item.preco,
                 quantidade: item.quantidade
             })),
-            total: total,
-            data: new Date().toISOString()
+            total: total
         };
-        
-        console.log('📦 Enviando para:', API_LOCAL + '/webhook/pedido');
-        
-        const response = await fetch(`${API_LOCAL}/webhook/pedido`, {
+
+        console.log('📦 Enviando para:', API_URL + '/api/checkout/pix');
+
+        const response = await fetch(`${API_URL}/api/checkout/pix`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'x-webhook-secret': 'callofstore_secret_2026'
             },
             body: JSON.stringify(dadosPedido)
         });
@@ -369,14 +371,14 @@ async function enviarPedidoWebhook() {
         const resultado = await response.json();
         
         if (resultado.sucesso) {
-            mostrarNotificacao('✅ Pedido enviado com sucesso!', 'sucesso');
+            mostrarNotificacao('✅ Pedido criado! Gere o pagamento PIX.', 'sucesso');
             localStorage.removeItem(CONFIG.CARRINHO_KEY);
-            
+
             const checkout = document.querySelector('.checkout-modal-overlay');
             if (checkout) checkout.remove();
-            
-            mostrarSucessoPedido(pedidoId, discordUser);
+
             atualizarIconeCarrinho();
+            mostrarModalPixPagamento(resultado);
         } else {
             throw new Error(resultado.erro || 'Erro desconhecido');
         }
@@ -384,16 +386,88 @@ async function enviarPedidoWebhook() {
     } catch (error) {
         console.error('❌ Erro detalhado:', error);
         
-        let mensagem = '❌ Erro de conexão! ';
-        if (!error.message.includes('HTTP')) {
-            mensagem += 'O bot está rodando? (node bot-tickets.js)';
-        } else {
-            mensagem += error.message;
-        }
+        let mensagem = '❌ Erro ao criar o pagamento! ';
+        mensagem += error.message || '';
         
         mostrarNotificacao(mensagem, 'erro');
     }
 }
+
+// ============================================
+// 5. MODAL PIX (MERCADO PAGO)
+// ============================================
+
+function mostrarModalPixPagamento(resultado) {
+    const modalExistente = document.querySelector('.pix-modal-overlay');
+    if (modalExistente) modalExistente.remove();
+
+    const pedidoId = resultado.pedidoId;
+    const qrBase64 = resultado.qr_code_base64;
+    const qrCopiaCola = resultado.qr_code;
+
+    const qrImgHtml = qrBase64
+        ? `<img src="data:image/png;base64,${qrBase64}" alt="PIX QR" style="max-width:260px;width:100%;border-radius:12px;"/>`
+        : `<div style="padding:12px;border:1px solid #333;border-radius:12px;">QR indisponível. Use o Copia e Cola abaixo.</div>`;
+
+    const html = `
+      <div class="pix-modal-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;z-index:99999;" onclick="if(event.target===this) this.remove()">
+        <div class="pix-modal" onclick="event.stopPropagation()" style="position:relative;max-width:520px;width:92%;background:#111;border:1px solid #222;border-radius:16px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,.6);">
+          <button style="background:transparent;border:none;color:#fff;font-size:28px;position:absolute;right:18px;top:10px;cursor:pointer" onclick="this.closest('.pix-modal-overlay').remove()">&times;</button>
+          <h2 style="margin:0 0 10px 0;">💚 Pague com PIX</h2>
+          <p style="margin:0 0 12px 0;opacity:.85;">
+  Pedido <b>#${pedidoId}</b> criado. Pague com PIX aqui no site e, em seguida, envie o <b>comprovante por DM</b> para o bot no Discord.
+</p>
+
+<div style="margin:10px 0 14px 0;padding:12px;border:1px solid #222;border-radius:12px;background:#0b0b0b;">
+  <div style="opacity:.88;margin-bottom:8px;">📩 Envie a imagem do comprovante junto do comando:</div>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+    <code style="display:block;padding:8px 10px;border:1px solid #2a2a2a;border-radius:10px;background:#050505;color:#fff;user-select:all;">!comprovante ${pedidoId}</code>
+    <button class="btn-confirmar" style="min-width:170px;" onclick="copiarComandoComprovante(${pedidoId})">📋 Copiar comando</button>
+    <a class="btn-cancelar" style="min-width:170px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;" href="${CONFIG.DISCORD_INVITE}" target="_blank" rel="noopener">💬 Abrir Discord</a>
+  </div>
+  <div style="margin-top:8px;opacity:.75;font-size:13px;">⚠️ Envie o comprovante <b>na DM do bot</b> (mensagem privada).</div>
+</div>
+
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:center;margin:14px 0;">
+            ${qrImgHtml}
+          </div>
+
+          <div style="margin-top:10px;">
+            <label style="display:block;margin-bottom:6px;opacity:.85;">📋 Copia e Cola</label>
+            <textarea id="pix-copia-cola" readonly style="width:100%;min-height:110px;background:#0b0b0b;color:#fff;border:1px solid #2a2a2a;border-radius:12px;padding:10px;">${qrCopiaCola || ''}</textarea>
+            <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;">
+              <button class="btn-confirmar" style="flex:1;min-width:180px;" onclick="copiarPixCopiaCola()">📋 Copiar código</button>
+              <a class="btn-cancelar" style="flex:1;min-width:180px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;" href="${CONFIG.DISCORD_INVITE}" target="_blank" rel="noopener">💬 Entrar no Discord</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', html);
+}
+
+async function copiarPixCopiaCola() {
+    try {
+        const el = document.getElementById('pix-copia-cola');
+        if (!el || !el.value) return;
+        await navigator.clipboard.writeText(el.value);
+        mostrarNotificacao('✅ Código PIX copiado!', 'sucesso');
+    } catch (e) {
+        mostrarNotificacao('⚠️ Não consegui copiar automaticamente. Selecione e copie manualmente.', 'erro');
+    }
+}
+
+async function copiarComandoComprovante(pedidoId) {
+    try {
+        const cmd = `!comprovante ${pedidoId}`;
+        await navigator.clipboard.writeText(cmd);
+        mostrarNotificacao('✅ Comando copiado! Abra a DM do bot e cole junto da imagem do comprovante.', 'sucesso', 5000);
+    } catch (e) {
+        mostrarNotificacao('⚠️ Não consegui copiar automaticamente. Copie manualmente: !comprovante ' + pedidoId, 'erro', 5000);
+    }
+}
+
 
 // ============================================
 // 5. TELA DE SUCESSO

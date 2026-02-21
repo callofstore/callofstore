@@ -2300,23 +2300,39 @@ const gamesData = [
                     "Armazenamento": "10 GB disponíveis"
                 }
             },
-            {
-                id: 107,
-                title: "Sons Of The Forest",
-                category: "terror",
-                steamPrice: 79.90,
-                ourPrice: 19.90,
-                image: "https://imgs.search.brave.com/JUjHY-Zo5HjywOtT2stk5fdbB-YBQBMwin-_XwyXQYc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWxsa2V5c2hvcC5j/b20vYmxvZy93cC1j/b250ZW50L3VwbG9h/ZHMvU29ucy1vZi10/aGUtRm9yZXN0LUVh/cmx5LUFjY2Vzcy1T/dGVhbS1SYXRpbmdf/ZmVhdHVyZWQucG5n",
-                requirements: {
-                    "Sistema Operacional": "Windows 10 64-bit",
-                    "Processador": "Intel Core i7-4790K / AMD Ryzen 5 1600",
-                    "Memória": "16 GB RAM",
-                    "Placa de vídeo": "NVIDIA GeForce GTX 1080 Ti / AMD Radeon RX 5700 XT",
-                    "DirectX": "Versão 11",
-                    "Armazenamento": "20 GB disponíveis"
-                }
-            }
-        ];
+    {
+        id: 107,
+        title: "Sons Of The Forest",
+        category: "terror",
+        steamPrice: 79.90,
+        ourPrice: 19.90,
+        image: "https://imgs.search.brave.com/JUjHY-Zo5HjywOtT2stk5fdbB-YBQBMwin-_XwyXQYc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWxsa2V5c2hvcC5j/b20vYmxvZy93cC1j/b250ZW50L3VwbG9h/ZHMvU29ucy1vZi10/aGUtRm9yZXN0LUVh/cmx5LUFjY2Vzcy1T/dGVhbS1SYXRpbmdf/ZmVhdHVyZWQucG5n",
+        requirements: {
+            "Sistema Operacional": "Windows 10 64-bit",
+            "Processador": "Intel Core i7-4790K / AMD Ryzen 5 1600",
+            "Memória": "16 GB RAM",
+            "Placa de vídeo": "NVIDIA GeForce GTX 1080 Ti / AMD Radeon RX 5700 XT",
+            "DirectX": "Versão 11",
+            "Armazenamento": "20 GB disponíveis"
+        }
+    },
+    {
+        id: 108,
+        title: "TESTE",
+        category: "terror",
+        steamPrice: 999.90,
+        ourPrice: 0.01,
+        image: "https://images.tcdn.com.br/img/img_prod/606732/produto_teste_3919_1_85010fa0e84b19ffcfe78386f6f702cd_20240903120335.jpg",
+        requirements: {
+            "Sistema Operacional": "Windows 10 64-bit",
+            "Processador": "Intel Core i7-4790K / AMD Ryzen 5 1600",
+            "Memória": "16 GB RAM",
+            "Placa de vídeo": "NVIDIA GeForce GTX 1080 Ti / AMD Radeon RX 5700 XT",
+            "DirectX": "Versão 11",
+            "Armazenamento": "20 GB disponíveis"
+        }
+    }
+    ];
 
 class PriceUpdateSystem {
     constructor() {
