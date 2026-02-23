@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call of Store [PT-BR] - Loja de Keys Steam com Descontos Insanos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="carrinho.css">
+    <script src="carrinho.js" defer></script>
+</head>
+<body>
+    <!-- Vídeo de fundo -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="https://media.discordapp.net/attachments/850835044393943120/1470619508996833331/b75345fb-aef2-40e5-ad53-6d3fd30d2d20.gif?ex=699a7525&is=699923a5&hm=2b1f4f61c7128a579e5999e091e95b659a8b508b789c7aac0718b2b8dc79645e&=" type="video/mp4">
+            <div class="fallback-bg"></div>
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- TELA DE CARREGAMENTO -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <div class="loading-logo-image">
+                    <div class="pixel"></div>
+                    <div class="pixel"></div>
+                    <div class="pixel"></div>
+                    <div class="pixel"></div>
+                </div>
+                <div class="loading-title">Call of Store [PT-BR]</div>
+            </div>
+            
+            <div class="loading-bar-container">
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <div class="loading-text">Carregando jogos incríveis...</div>
+                <div class="loading-stats">
+                    <span class="loading-stat">🎮 100+ Jogos</span>
+                    <span class="loading-stat">⚡ Entrega Rápida</span>
+                    <span class="loading-stat">💰 Descontos Insanos</span>
+                </div>
+            </div>
+            
+            <div class="loading-tip">
+                <i class="fas fa-lightbulb"></i>
+                <span>Dica: Use a barra de pesquisa para encontrar jogos rapidamente!</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="trail-container"></div>
+    <div id="stars-bg"></div>
+    
+    <div class="social-sidebar">
+        <a href="https://discord.gg/3hPTerCjju" target="_blank" class="slide-right-fast">
+            <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://www.tiktok.com/@callofstoreofc?_r=1&_t=ZS-93jA9sqNMJD" target="_blank" class="slide-right-fast">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.instagram.com/callofstoreoficial?igsh=NmUxY3BwcWdoYWJt" target="_blank" class="slide-right-fast">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+    <div id="gameModal" class="game-modal">
+        <div class="game-modal-content">
+            <button class="close-game-modal" onclick="closeGameModal()">&times;</button>
+            <div class="game-modal-header">
+                <div class="game-modal-image">
+                    <img id="modalImage" src="" alt="Jogo">
+                </div>
+                <div class="game-modal-info">
+                    <h2 class="game-modal-title" id="modalTitle"></h2>
+                    <div class="game-modal-price-section">
+                        <div class="game-modal-price" id="modalPrice"></div>
+                        <div class="game-modal-original-price" id="modalOriginalPrice"></div>
+                    </div>
+                    <div class="game-modal-buttons">
+                        <button class="game-modal-btn" onclick="comprarJogoModal()">
+                            <i class="fab fa-discord"></i> Comprar via Discord
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-modal-requirements">
+                <h3><i class="fas fa-desktop"></i> Requisitos do Sistema</h3>
+                <div class="requirements-grid" id="modalRequirements">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo slide-left-fast">
+                <img src="https://drive.google.com/file/d/1_X2xsMu62bBtyEUCIjL0AsCPK_X9NnHF/view?usp=drive_link" 
+                     alt="Call of Store [PT-BR]" 
+                     class="logo-image">
+                <span>Call of Store [PT-BR]</span>
+            </a>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home" class="slide-left-fast">Início</a></li>
+                    <li><a href="#catalogo" class="slide-left-fast">Catálogo</a></li>
+                    <li><a href="#sobre-nos" class="slide-left-fast">Sobre-nós</a></li>
+                    <li><a href="#contato" class="slide-left-fast">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="fade-up-fast">🎮 Call of Store [PT-BR]🎮</h1>
+            <p class="fade-up-fast">Bem-Vindo à CallOfStore! melhor loja no mercado de jogos digitais, oferecendo os melhores jogos com os melhores preços.</p>
+            
+            <div class="hero-stats fade-up-fast">
+                <div class="stat-item">
+                    <span class="stat-number" id="stat1">100+</span>
+                    <span class="stat-label">Jogos Disponíveis</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="stat2">98%</span>
+                    <span class="stat-label">Economia Máxima</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Atendimento</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="stat4">100%</span>
+                    <span class="stat-label">Jogos Originais</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogo">
+        <div class="container">
+            <div class="special-section">
+                <h2 class="section-title fade-in-fast">🎮 CATÁLOGO COMPLETO 🎮</h2>
+                
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" 
+                               id="searchInput" 
+                               class="search-input" 
+                               placeholder="🔍 Pesquisar jogos pelo nome..."
+                               onkeyup="filterGamesBySearch()">
+                        <div class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="search-results-info" id="searchResultsInfo">
+                        Mostrando todos os jogos
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.5rem;">Filtrar por Categoria:</h3>
+                    <div class="filter-buttons" id="filterButtons">
+                        <button class="filter-btn active" data-category="todos">Todos</button>
+                        <button class="filter-btn" data-category="terror">Terror</button>
+                        <button class="filter-btn" data-category="acao">Ação</button>
+                        <button class="filter-btn" data-category="aventura">Aventura</button>
+                        <button class="filter-btn" data-category="rpg">RPG</button>
+                        <button class="filter-btn" data-category="esportes">Esportes</button>
+                        <button class="filter-btn" data-category="corrida">Corrida</button>
+                    </div>
+                </div>
+                
+                <div class="games-grid" id="games-grid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-nos">
+        <div class="container">
+            <div class="special-section">
+                <h2 class="section-title fade-in-fast">📚 SOBRE-NÓS</h2>
+                <div style="text-align: center; padding: 20px;">
+                    <p class="fade-up-fast" style="margin-bottom: 20px; font-size: 1.2rem;">
+                        A <strong style="color: var(--primary-color);">Call of Store [PT-BR]</strong> nasceu com o objetivo de trazer os melhores preços 
+                        em keys Steam para a comunidade brasileira.
+                    </p>
+                    <p class="fade-up-fast" style="margin-bottom: 20px; font-size: 1.2rem;">
+                        Somos uma loja Revendedora de jogos e contas Steam com descontos insanos, oferecendo 
+                        produtos 100% legítimos com entrega via Discord.
+                    </p>
+                    <p class="fade-up-fast" style="margin-bottom: 20px; font-size: 1.2rem;">
+                        Nossa missão é Oferecer o acesso aos melhores jogos, proporcionando uma 
+                        experiência de compra segura, rápida e com o melhor custo-benefício do mercado.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title fade-in-fast">ℹ️ Informações Importantes ℹ️</h2>
+            <div class="notices-section">
+                <div class="notices">
+                    <div class="notice-card rotate-in">
+                        <div class="notice-icon success">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="notice-content">
+                            <p style="font-weight: 600;">✅ Entrega Rápida - Key em menos de 10 minutos!</p>
+                        </div>
+                    </div>
+                    <div class="notice-card rotate-in">
+                        <div class="notice-icon success">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="notice-content">
+                            <p style="font-weight: 600;">✅ Produtos Originais (Key Steam)</p>
+                        </div>
+                    </div>
+                    <div class="notice-card rotate-in">
+                        <div class="notice-icon danger">
+                            <i class="fas fa-user-times"></i>
+                        </div>
+                        <div class="notice-content">
+                            <p style="font-weight: 600;">❌ Não é conta compartilhada/nem acesso temporário</p>
+                        </div>
+                    </div>
+                    <div class="notice-card rotate-in">
+                        <div class="notice-icon info">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="notice-content">
+                            <p style="font-weight: 600;">🎮 Modo Online Desativado</p>
+                        </div>
+                    </div>
+                    <div class="notice-card rotate-in">
+                        <div class="notice-icon warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="notice-content">
+                            <p style="font-weight: 600;">⚠️ Verifique os requisitos do jogo antes de comprar</p>
+                        </div>
+                    </div>
+                    <div class="notice-card rotate-in">
+                        <div class="notice-icon warning">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="notice-content">
+                            <p style="font-weight: 600;">❗ Sem reembolso após ativação da key na Steam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3><i class="fas fa-headset"></i> Suporte</h3>
+                    <ul>
+                        <li><a href="https://discord.gg/3hPTerCjju" class="slide-right-fast"><i class="fab fa-discord"></i> Discord</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('termos')" class="slide-right-fast"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('privacidade')" class="slide-right-fast"><i class="fas fa-lock"></i> Política de Privacidade</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('faq')" class="slide-right-fast"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo fade-in-fast">Call of <span>Store</span> [PT-BR]</div>
+                    <p class="fade-in-fast" style="margin-bottom: 20px;"> Compre com segurança e receba sua key diretamente via Discord.</p>
+                    <div class="social-icons">
+                        <a href="https://discord.gg/3hPTerCjju" class="scale-in-fast"><i class="fab fa-discord"></i></a>
+                        <a href="https://www.tiktok.com/@callofstoreofc?_r=1&_t=ZS-93jA9sqNMJD" class="scale-in-fast"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/callofstoreoficial?igsh=NmUxY3BwcWdoYWJt" class="scale-in-fast"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright fade-in-fast">
+                <div>&copy; 2026 Call of Store [PT-BR]. Todos os direitos reservados.</div>
+                <div class="status-info">
+                    <div class="status-item">
+                        <span class="online-dot"></span>
+                        <span class="online-text">Online</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="secure-dot"></span>
+                        <span class="secure-text">Seguro</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="discordModal" class="modal">
+        <div class="modal-content">
+            <h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.8rem;">🎮 Finalizar Compra no Discord</h3>
+            <p style="color: white; margin-bottom: 20px; font-size: 1.1rem;">Para comprar <strong id="modalGameTitle" style="color: var(--accent-color);"></strong>, siga estes passos:</p>
+            
+            <div style="text-align: left; background: #0f0f1a; padding: 20px; border-radius: 15px; margin-bottom: 25px; border-left: 4px solid var(--primary-color);">
+                <p style="color: var(--secondary-color); margin: 12px 0; font-size: 1.1rem;">1️⃣ <strong>Entre no nosso Discord</strong></p>
+                <p style="color: var(--secondary-color); margin: 12px 0; font-size: 1.1rem;">2️⃣ <strong>Vá para o canal #comprar-aqui</strong></p>
+                <p style="color: var(--secondary-color); margin: 12px 0; font-size: 1.1rem;">3️⃣ <strong>Digite: <code id="commandText" style="background: #2a2a4a; padding: 8px 15px; border-radius: 8px; font-family: monospace; font-size: 1.1rem; color: var(--accent-color);"></code></strong></p>
+                <p style="color: var(--secondary-color); margin: 12px 0; font-size: 1.1rem;">4️⃣ <strong>Atendimento rápido em 2-5 minutos! ⚡</strong></p>
+            </div>
+            
+            <div class="modal-buttons">
+                <button class="modal-btn primary" onclick="openDiscord()">
+                    <i class="fab fa-discord"></i> Abrir Discord
+                </button>
+                <button class="modal-btn success" onclick="copyCommand()">
+                    <i class="fas fa-copy"></i> Copiar Comando
+                </button>
+                <button class="modal-btn secondary" onclick="closeModal()">
+                    <i class="fas fa-times"></i> Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="termosModal" class="modal-info">
+        <div class="modal-info-content">
+            <button class="close-modal" onclick="closeInfoModal('termos')">&times;</button>
+            <h3>📄 Termos de Uso</h3>
+            <div style="text-align: left; margin-top: 20px;">
+                <p><strong>1. Aceitação dos Termos</strong><br>
+                Ao utilizar nossos serviços, você concorda com estes termos de uso.</p>
+                
+                <p><strong>2. Produtos e Serviços</strong><br>
+                Vendemos keys Steam originais para ativação na plataforma oficial da Steam.</p>
+                
+                <p><strong>3. Entrega</strong><br>
+                As keys são entregues digitalmente via Discord em até 5 minutos após confirmação do pagamento.</p>
+                
+                <p><strong>4. Política de Reembolso</strong><br>
+                Não realizamos reembolsos após a ativação da key na Steam.</p>
+                
+                <p><strong>5. Responsabilidades</strong><br>
+                Verifique os requisitos do sistema antes da compra. Não nos responsabilizamos por incompatibilidades.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="privacidadeModal" class="modal-info">
+        <div class="modal-info-content">
+            <button class="close-modal" onclick="closeInfoModal('privacidade')">&times;</button>
+            <h3>🔒 Política de Privacidade</h3>
+            <div style="text-align: left; margin-top: 20px;">
+                <p><strong>1. Coleta de Dados</strong><br>
+                Coletamos apenas informações necessárias para processar sua compra: nome, email e Discord ID.</p>
+                
+                <p><strong>2. Uso das Informações</strong><br>
+                Seus dados são usados apenas para finalizar sua compra e fornecer suporte.</p>
+                
+                <p><strong>3. Proteção de Dados</strong><br>
+                Utilizamos criptografia SSL para proteger suas informações durante a transação.</p>
+                
+                <p><strong>4. Compartilhamento</strong><br>
+                Não vendemos ou compartilhamos seus dados com terceiros.</p>
+                
+                <p><strong>5. Cookies</strong><br>
+                Utilizamos cookies para melhorar sua experiência de navegação.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="faqModal" class="modal-info">
+        <div class="modal-info-content">
+            <button class="close-modal" onclick="closeInfoModal('faq')">&times;</button>
+            <h3>❓ Perguntas Frequentes (FAQ)</h3>
+            <div style="text-align: left; margin-top: 20px;">
+                <p><strong>Q: Como funciona a compra?</strong><br>
+                A: Você entra no nosso Discord, vai para o canal #comprar-aqui e digita o comando /comprar [nome do jogo].</p>
+                
+                <p><strong>Q: As keys são originais?</strong><br>
+                A: Sim! Todas as keys são 100% originais e oficiais da Steam.</p>
+                
+                <p><strong>Q: Quanto tempo leva para receber a key?</strong><br>
+                A: A entrega é quase instantânea, em até 5 minutos após confirmação do pagamento.</p>
+                
+                <p><strong>Q: Posso reembolsar?</strong><br>
+                A: Não realizamos reembolsos após a ativação da key na Steam.</p>
+                
+                <p><strong>Q: Os jogos têm suporte a multiplayer?</strong><br>
+                A: Alguns jogos têm modo online ativado, outros não. Verifique na descrição do produto.</p>
+                
+                <p><strong>Q: Como entro em contato com o suporte?</strong><br>
+                A: Através do nosso Discord no canal #suporte.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="skip-loading-btn" onclick="skipLoading()">
+        Pular Loading
+    </button>
+
+    <script src="site.js"></script>
+</body>
+</html>
