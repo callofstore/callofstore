@@ -19,6 +19,38 @@
         <div class="video-overlay"></div>
     </div>
 
+    <!-- TELA DE CARREGAMENTO -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <div class="loading-logo-image">
+                    <div class="pixel"></div>
+                    <div class="pixel"></div>
+                    <div class="pixel"></div>
+                    <div class="pixel"></div>
+                </div>
+                <div class="loading-title">Call of Store [PT-BR]</div>
+            </div>
+            
+            <div class="loading-bar-container">
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <div class="loading-text">Carregando jogos incríveis...</div>
+                <div class="loading-stats">
+                    <span class="loading-stat">🎮 100+ Jogos</span>
+                    <span class="loading-stat">⚡ Entrega Rápida</span>
+                    <span class="loading-stat">💰 Descontos Insanos</span>
+                </div>
+            </div>
+            
+            <div class="loading-tip">
+                <i class="fas fa-lightbulb"></i>
+                <span>Dica: Use a barra de pesquisa para encontrar jogos rapidamente!</span>
+            </div>
+        </div>
+    </div>
+
     <div class="trail-container"></div>
     <div id="stars-bg"></div>
     
@@ -372,6 +404,10 @@
             </div>
         </div>
     </div>
+
+    <button class="skip-loading-btn" onclick="skipLoading()">
+        Pular Loading
+    </button>
 
     <script src="site.js"></script>
 </body>
