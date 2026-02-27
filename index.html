@@ -95,20 +95,55 @@
         </div>
     </div>
 
+    <!-- HEADER NOVO (logo esquerda / busca centro / carrinho+entrar direita) -->
     <header id="main-header">
-        <div class="container header-container">
-            <a href="#" class="logo slide-left-fast">
+        <div class="container header-container header-v2">
+            <!-- ESQUERDA: LOGO -->
+            <a href="#home" class="logo slide-left-fast header-left">
                 <img src="https://drive.google.com/file/d/1_X2xsMu62bBtyEUCIjL0AsCPK_X9NnHF/view?usp=drive_link" 
                      alt="Call of Store [PT-BR]" 
                      class="logo-image">
                 <span>Call of Store [PT-BR]</span>
             </a>
-            
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
+
+            <!-- CENTRO: BUSCA (mantém os IDs que o site.js usa) -->
+            <div class="header-search header-center">
+                <div class="search-box">
+                    <input type="text"
+                           id="searchInput"
+                           class="search-input"
+                           placeholder="🔍 Procure pelo nome do produto"
+                           onkeyup="filterGamesBySearch()">
+                    <div class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="search-results-info" id="searchResultsInfo">
+                    Mostrando todos os jogos
+                </div>
             </div>
-            
-            <nav>
+
+            <!-- DIREITA: AÇÕES + MENU MOBILE -->
+            <div class="header-actions header-right">
+                <button type="button" class="header-btn cart-btn" id="openCartBtn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Carrinho</span>
+                </button>
+
+                <button type="button" class="header-btn login-btn" id="loginBtn">
+                    <i class="fas fa-right-to-bracket"></i>
+                    <span>Entrar</span>
+                </button>
+
+                <div class="mobile-menu" aria-label="Abrir menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAV (mantive igual, só deixei abaixo do header pra ficar estilo “menu do site”) -->
+        <div class="container">
+            <nav class="header-nav">
                 <ul>
                     <li><a href="#home" class="slide-left-fast">Início</a></li>
                     <li><a href="#catalogo" class="slide-left-fast">Catálogo</a></li>
@@ -149,23 +184,9 @@
         <div class="container">
             <div class="special-section">
                 <h2 class="section-title fade-in-fast">🎮 CATÁLOGO COMPLETO 🎮</h2>
-                
-                <div class="search-container">
-                    <div class="search-box">
-                        <input type="text" 
-                               id="searchInput" 
-                               class="search-input" 
-                               placeholder="🔍 Pesquisar jogos pelo nome..."
-                               onkeyup="filterGamesBySearch()">
-                        <div class="search-icon">
-                            <i class="fas fa-search"></i>
-                        </div>
-                    </div>
-                    <div class="search-results-info" id="searchResultsInfo">
-                        Mostrando todos os jogos
-                    </div>
-                </div>
-                
+
+                <!-- A BUSCA FOI MOVIDA PRO HEADER (pra evitar ID duplicado) -->
+
                 <div class="filter-section">
                     <h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.5rem;">Filtrar por Categoria:</h3>
                     <div class="filter-buttons" id="filterButtons">
